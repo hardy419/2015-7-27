@@ -1,0 +1,140 @@
+.content_pop {
+	font-size: 12px;
+	color: #004580;
+}
+
+.normal {
+	font-size: 12px;
+}
+
+a:link {
+	text-decoration:underline;
+	color: #0000FF;
+}
+a:visited {
+	
+	text-decoration:underline;
+	color: #0000FF;
+	
+}
+a:active {
+	text-decoration:none;
+	color: #FF0000;
+}
+
+a:hover {
+	text-decoration:none;
+	color: #FF0000;
+}
+body.main_small{
+	font-family: "Arial", "新細明體", "Times New Roman";
+	font-size: 12px;
+}
+table.small {
+	font-family: "Arial", "新細明體", "Times New Roman";
+	font-size: 12px;
+
+}
+/*
+admin panel meun table
+*/
+table.admin_meun{
+	font-family: "Arial", "新細明體", "Times New Roman";
+	font-size: 12px;
+	background: #661143;
+}
+/*
+admin panel meun table header
+*/
+td.admin_meun_header{
+	background: #FFCCFF;
+	text-align:center;
+}
+/*
+admin panel meun table contents
+*/
+td.admin_meun_contents{
+	background: #FFFFFF;
+	text-align:center;
+}
+/*
+admin panel meun contents table
+*/
+table.admin_contents_table{
+	font-family: "Arial", "新細明體", "Times New Roman";
+	font-size: 12px;
+	background: #FFFFFF;
+	text-align:center;
+}
+/*
+admin panel maintain table
+*/
+table.admin_maintain_table{
+	font-family: "Arial", "新細明體", "Times New Roman";
+	font-size: 12px;
+	border-color: #661143;
+
+	border-collapse: collapse;
+}
+/*
+admin panel maintain table header
+*/
+tr.admin_maintain_header{
+	background: #FFF8CF;
+}
+td.admin_maintain_header{
+	border-color: #661143;	
+}
+/*
+admin panel maintain table contents
+*/
+tr.admin_maintain_contents{
+	background: #FFFFFF;
+}
+td.admin_maintain_contents{
+	border-color: #661143;
+}
+/*
+maintain page Title 
+*/
+.title{
+	font-size: 32px;	
+}
+/*
+maintain form table
+*/
+table.admin_maintain_form_table{
+	font-family: "Arial", "新細明體", "Times New Roman";
+	font-size: 12px;
+	border-color: #661143;
+	border-collapse: collapse;
+}
+/*
+maintain form table header
+*/
+tr.admin_maintain_form_header{
+	background: #FFF8CF;
+}
+td.admin_maintain_form_header{
+	border-color: #661143;	
+}
+/*
+maintain form table contents
+*/
+tr.admin_maintain_form_contents{
+	background: #FFFFFF;
+}
+td.admin_maintain_form_contents{
+	border-color: #661143;	
+}
+/*
+maintain form table footer
+*/
+tr.admin_maintain_form_footer{
+	background: #FFF8CF;
+}
+td.admin_maintain_form_footer{
+	border-color: #661143;
+	text-align:right;		
+}
+

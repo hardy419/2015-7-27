@@ -1,0 +1,149 @@
+<?
+
+
+
+
+    // Connect Database
+
+    require("../../php-bin/function.php");
+
+    require("../../php-bin/pagedisplay.php");
+
+
+
+    // Initial variables
+
+    $msg = "";
+
+    $u_name = "";
+
+    $u_type = "";
+
+    $u_status = "";
+
+
+
+    if (isset($_GET["msg"])){  // GET status message
+
+      $msg = $_GET["msg"];
+
+    }
+
+
+
+    $orderby = "tc.class_name, ts.student_class_no";
+
+    $orderseq = "asc";
+
+    $page = 1;
+
+    $record_per_page = 15;   // records display each page
+
+    if (isset($_GET["page"])){
+
+        $page = $_GET["page"];
+
+    }
+
+    if (isset($_GET["orderby"])){
+
+        $orderby = $_GET["orderby"];
+
+    }
+
+    if (isset($_GET["seq"])){
+
+        $orderseq = $_GET["seq"];
+
+    }
+
+    require("../../php-bin/get_class_selection.php");
+
+
+
+    /* pagedisplay function's arrays
+
+     * $search_arr : The searching arguments array, format likes :
+
+     *               array("name1"=>"value1",
+
+     *                     "name2"=>"value2");
+
+     * $sort_arr : The sorting arguments array, format likes :
+
+     *             array("orderby"=>"order_by_name1",
+
+     *                   "seq"=>"asc/desc",
+
+     *                   "orderby"=>"order_by_name2",
+
+     *                   "seq"=>"asc/desc");
+
+	 * $class_arr : The style class of font,table,table row and table cell, format likes :
+
+     *              array("font_class_name",
+
+     *                    "table_class_name",
+
+     *                    "tr_class_name",
+
+     *                    "td_class_name");  */
+
+
+
+    $search_arr = array("s_name"=>$_GET["s_name"],
+
+                        "s_class"=>$_GET["s_class"]);
+
+    $sort_arr = array("orderby"=>$orderby,
+
+                      "seq"=>$orderseq);
+
+    $class_arr = array("",
+
+                       "small border=0 cellpadding=0 cellspacing=0",
+
+                       "",
+
+                       "\"\" style=\"padding-left:2px;padding-right:2px;\"");
+
+
+
+
+
+    // Get User's Information
+
+    $get_sql = "Select * FROM `tbl_student` ts , `tbl_class` tc WHERE ts.class_id = tc.class_id";
+
+    if ($_GET[s_name] != ""){
+	$get_sql .= " and student_name LIKE '%" . $_GET[s_name]. "%'"; 
+    }
+
+    if ($_GET[s_class] != ""){
+	$get_sql .= " and ts.class_id = '" . $_GET[s_class]. "'"; 
+    }
+
+    if ($orderby!=""){
+
+        $get_sql .= " ORDER BY ".$orderby." ".$orderseq;
+
+    }
+
+    $get_result = mysql_query($get_sql, $link_id);
+
+    $total_record = mysql_num_rows($get_result);
+
+    $offset = $record_per_page * ($page-1);
+
+    $total_page = ceil($total_record/$record_per_page);
+
+    $get_result = mysql_query($get_sql." limit $offset,$record_per_page;", $link_id);
+
+
+
+    mysql_close();
+
+
+
+?>
+
