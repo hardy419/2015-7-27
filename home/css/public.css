@@ -1,0 +1,30 @@
+@charset "utf-8";
+/*positoin*/
+.pr{position:relative;}
+.pa{position:absolute;}
+
+/*float*/
+.fl{float:left;}
+.fr{float:right;}
+
+/*margin*/
+.ml14{margin-left:14px;}
+
+.mt5{margin-top:5px;}
+.mt10{margin-top:10px;}
+.mt20{margin-top:20px;}
+.mt169{margin-top:169px;}
+
+/*padding*/
+.pb{padding-bottom:15px;}
+.language{
+	 left: 798px;
+	 width:190px;
+    top: 20px;
+	height:26px;
+	
+	}
+.language a{display:block;float:right;}
+.language a.cn{width:80px;height:26px;margin-right:28px;background:url(../images/cn_on.jpg) no-repeat left center;}
+/*.language a.cen{width:11px;background:url(../images/line.jpg) no-repeat center 7px;}
+.language a.en{width:80px;height:26px;background:url(../images/en.jpg) no-repeat left center;}*/

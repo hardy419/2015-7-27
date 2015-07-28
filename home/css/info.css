@@ -1,0 +1,175 @@
+@charset "utf-8";
+body {
+	background: #fffeec;
+}
+/*=================学校资料-页头=================*/
+
+/*=================页中=================*/
+.infowrap1 {
+	width: 980px;
+	margin: 0 auto;
+	height: 950px;
+	padding-top: 32px;
+	background: url(../images/info_banner.jpg) 42px top no-repeat;
+}
+
+.infowrap2 {
+	width: 980px;
+	margin: 0 auto;
+	height: 1260px;
+	padding-top: 32px;
+	background: url(../images/about_banner.jpg) 3px top no-repeat;
+}
+
+.infowrap3 {
+	width: 980px;
+	margin: 0 auto;
+	height: 1410px;
+	padding-top: 32px;
+	background: url(../images/about_banner.jpg) 3px top no-repeat;
+}
+
+
+#infowrap .infoTop {
+	width: 960px;
+	height: 150px;
+	margin: 0 auto;
+}
+#infowrap .infoTop .logo {
+	width: 337px;
+	height: 118px;
+	background: url(../images/logo.jpg) no-repeat;
+	top: 15px;
+	left: 5px;
+}
+#infowrap .infoTop .cloud_01 {
+	width: 36px;
+	height: 25px;
+	background: url(../images/cloud_01.jpg) no-repeat;
+	left: 436px;
+	top: 36px;
+}
+#infowrap .infoTop .cloud_02 {
+	width: 22px;
+	height: 15px;
+	background: url(../images/cloud_02.jpg) no-repeat;
+	left: 745px;
+	top: 59px;
+}
+#infowrap .infoTop .add {
+	width: 561px;
+	height: 18px;
+	background: url(../images/add.jpg) no-repeat;
+	left: 397px;
+	top: 89px;
+}
+#infowrap .pageInfo {
+	width: 980px;
+	margin: 0 auto;
+}
+#infowrap .pageInfo .pageInfo_l {
+	width: 240px;
+	left: 8px;
+	top: 556px;
+}
+#infowrap .pageInfo .pageInfo_l ul {
+}
+#infowrap .pageInfo .pageInfo_l ul li {
+	margin-bottom: 36px;
+}
+#infowrap .pageInfo .info_position{
+	width: 700px;
+	left: 250px;
+	top: 515px;
+}
+#infowrap .pageInfo .pageInfo_r {
+	width: 700px;
+	left: 250px;
+	top: 632px;
+}
+
+.pageInfo .pageInfo_r {
+	width: 700px;
+	left: 250px;
+	top: 607px;
+}
+.pageInfo .pageInfo_r h1 {
+	font-size: 16px;
+	color: #333;
+	line-height: 28px;
+	font-weight: normal;
+}
+.pageInfo .pageInfo_r dl dt {
+	display: inline-block;
+	width: 410px;
+}
+.pageInfo .pageInfo_r dl dt img {
+	margin-left: 103px;
+	margin-top: 21px;
+	margin-bottom: 11px;
+}
+.pageInfo .pageInfo_r dl dd {
+	position: absolute;
+	display: inline-block;
+}
+.pageInfo .pageInfo_r p {
+	display: inline-block;
+	font-size: 16px;
+	color: #333;
+	font-weight: normal;
+	line-height:28px;
+}
+.pageInfo .pageInfo_con{width:700px;margin-top:21px;}
+.pageInfo .pageInfo_con img{position:absolute;top:0; left:0;}
+.pageInfo .pageInfo_con p{position:absolute;top:41px; left:221px;}
+
+.pageInfo .pageInfo_con_01{width:700px;margin-top:190px;}
+.pageInfo .pageInfo_con_01 img{position:absolute;top:0; left:0;}
+.pageInfo .pageInfo_con_01 p{position:absolute;top:41px; left:221px;}
+
+
+
+
+/*=================页尾=================*/
+#footer_wrap {
+	width: 100%;
+	height: 121px;
+	background: #76bb6a;
+}
+#footer_wrap .footer {
+	width: 960px;
+	height: 121px;
+	margin: 0 auto;
+}
+#footer_wrap .footer .footermenu {
+	width: 385px;
+	height: 62px;
+	margin-top: 18px;
+	font-size: 12px;
+}
+#footer_wrap .footer .footermenu ul {
+}
+#footer_wrap .footer .footermenu ul li {
+	width: 64px;
+	float: left;
+	border-right: 1px solid #fff;
+	margin-bottom: 12px;
+}
+#footer_wrap .footer .footermenu ul li.bdn {
+	width: 64px;
+	float: left;
+	border-right: none;
+	margin-bottom: 12px;
+}
+#footer_wrap .footer .footermenu ul li a, #footer .copyright .footermenu ul li a:hover {
+	color: #fff;
+}
+#footer_wrap .footer .contact {
+	font-size: 12px;
+	color: #fff;
+	margin-top: 18px;
+}
+#footer_wrap .footer .contact span, #footer_wrap .footer .contact p {
+	display: block;
+	text-align: right;
+}

@@ -1,0 +1,175 @@
+/*
+
+HOW TO CREATE A CSS3 DROPDOWN MENU [TUTORIAL]
+
+"How to create a CSS3 Dropdown Menu [Tutorial]" was specially made for DesignModo by our friend Valeriu Timbuc.
+
+Links:
+http://vtimbuc.net/
+https://twitter.com/vtimbuc
+http://designmodo.com
+http://vladimirkudinov.com
+
+*/
+
+/* Reset */
+.menu,
+.menu ul,
+.menu li,
+.menu a {
+	margin: 0;
+	padding: 0;
+	border: none;
+	outline: none;
+}
+
+/* Menu */
+.menu {	
+	top:118px;
+	left:167px;
+	height: 26px;
+	width: 792px;
+
+	/*background: #f5dcf9;*/
+    background:url(../images/menu_bg.png) no-repeat left center;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	
+	box-shadow: 4px 4px 4px rgba(0,0,0,.3);
+	-webkit-box-shadow: 4px 4px 4px rgba(0,0,0,.3);
+	-moz-box-shadow: 4px 4px 4px rgba(0,0,0,.3);
+	-o-box-shadow: 4px 4px 4px rgba(0,0,0,.3);
+	-ms-box-shadow: 4px 4px 4px rgba(0,0,0,.3);
+	z-index:9999;
+}
+
+.menu li {
+	position: relative;
+	list-style: none;
+	float: left;
+	display: block;
+	height: 26px;
+	width:88px;
+	text-align:center;
+}
+
+/* Links */
+
+.menu li a {
+	height: 26px;
+	display: block;
+	line-height: 26px;
+	text-decoration: none;
+	
+	border-left: 1px solid #6ebbcf;
+
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight: bold;
+	font-size: 13px;
+
+	color: #266b7a;
+	
+
+	-webkit-transition: color .2s ease-in-out;
+	-moz-transition: color .2s ease-in-out;
+	-o-transition: color .2s ease-in-out;
+	-ms-transition: color .2s ease-in-out;
+	transition: color .2s ease-in-out;
+	
+	
+}
+
+.menu li:first-child a { border-left: none; }
+.menu li:last-child a{ border-right: none; }
+
+.menu li a:hover { color: #fff; display:block;height:26px; background:#d091e0;}
+.menu li a.current { color: #fff; display:block;height:26px; background:#d091e0;}
+.menu li #home.current{background:url(../images/menu_left.png) no-repeat left center ;}
+.menu li #last_menu.current{background:url(../images/menu_right.png) no-repeat right center ;}
+.menu li #home:hover{background:url(../images/menu_left.png) no-repeat left center ;}
+.menu li #last_menu:hover{background:url(../images/menu_right.png) no-repeat right center ;}
+/* Sub Menu */
+
+.menu ul {
+	position: absolute;
+	top: 26px;
+	left: 0;
+
+	opacity: 0;
+	
+	background: #d091e0;
+
+	-webkit-border-radius: 0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
+	border-radius: 0 0 5px 5px;
+
+	-webkit-transition: opacity .5s ease .1s;
+	-moz-transition: opacity .5s ease .1s;
+	-o-transition: opacity .5s ease .1s;
+	-ms-transition: opacity .5s ease .1s;
+	transition: opacity .5s ease .1s;
+}
+
+.menu li:hover > ul { opacity: 1; background:#d092df; }
+
+.menu ul li {
+	height: 0;
+	overflow: hidden;
+	padding: 0;
+	
+	
+	
+
+	-webkit-transition: height .25s ease .1s;
+	-moz-transition: height .25s ease .1s;
+	-o-transition: height .25s ease .1s;
+	-ms-transition: height .25s ease .1s;
+	transition: height .25s ease .1s;
+}
+
+.menu li:hover > ul li {
+	height: 26px;
+	overflow: visible;
+	padding: 0;
+	line-height:26px;
+	border-bottom:1px solid #fff;
+}
+
+.menu ul li a {
+	width: 85px;
+	margin: 0;
+	color:#fff;
+	border: none;
+	height:26px;
+	line-height:26px;
+	border-bottom:1px solid #fff;
+	display:block;
+}
+.menu ul li a:hover {
+	width: 85px;
+	margin: 0;
+	color: #266b7a;
+	border: none;
+	height:26px;
+	line-height:26px;
+	border-bottom:1px solid #fff;
+	display:block;
+}
+
+
+.menu ul li:last-child a { border: none; }
+
+/*activity*/
+.activity{width:960px;margin:0 auto;position:relative;}
+.act{position:absolute;top:-40px;z-index:1;}
+.activity_wrap{
+	height: 267px;
+	margin: 0 auto;
+    width: 960px;
+}
+
+
+
+
+
