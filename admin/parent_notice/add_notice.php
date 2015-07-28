@@ -28,7 +28,7 @@
 <script LANGUAGE="JavaScript" src="../../js/calendarevents.js" type="text/javascript"></script>
 <script LANGUAGE="JavaScript" src="../../js/calendar.js" type="text/javascript"></script>
 <script LANGUAGE="JavaScript" src="../../js/calendar-en.js" type="text/javascript"></script>
-<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+<script type='text/javascript' src='../../js/jquery-1.10.2.min.js'></script>
 <body>
 
 <img src="admin_label.gif" width="500" height="35">
@@ -133,7 +133,7 @@
           <td height="18" bgcolor="ECECEC"><font class="style8">&nbsp;類別 :</font></td>
           <td height="18" bgcolor="FFFFFF">
                     <select name="web_type" id="web_type">
-          <?
+          <?PHP
 			require_once("../../php-bin/get_web_type_selection.php");
 		    require_once("../../php-bin/get_web_type_select_html.php");
           ?>
@@ -188,21 +188,21 @@
         <tr>
           <td height="18" bgcolor="ECECEC"><font class="style8">&nbsp;日期:</font></td>
           <td height="18" bgcolor="FFFFFF"><font class="style8">
-      <input id='date_day' name="date_day" type="text" size="2" maxlength="2" class="style8" value="<?=$day?>">      
+      <input id='date_day' name="date_day" type="text" size="2" maxlength="2" class="style8" value="<?PHP echo $day; ?>">      
       -
-      <input id='date_month' name="date_month" type="text" size="2" maxlength="2" class="style8" value="<?=$month?>">
+      <input id='date_month' name="date_month" type="text" size="2" maxlength="2" class="style8" value="<?PHP echo $month; ?>">
       -
-	  <input id='date_year' name="date_year" type="text" size="4" maxlength="4" class="style8" value="<?=$year?>">
+	  <input id='date_year' name="date_year" type="text" size="4" maxlength="4" class="style8" value="<?PHP echo $year; ?>">
 &nbsp;<img src="../../images/calendar.gif" alt="calendar" border="0" onClick="showCalendar('date_year','date_day','date_month','date_year','d m y')">&nbsp;DD -MM-YYYY </font></td>
         </tr>
         <!--tr>
           <td height="18" bgcolor="ECECEC">有效日期:</td>
           <td height="18" bgcolor="FFFFFF"><font class="style8">
-      <input id='date_day2' name="date_day2" type="text" size="2" maxlength="2" class="style8" value="<?=$day2?>">
+      <input id='date_day2' name="date_day2" type="text" size="2" maxlength="2" class="style8" value="<?PHP echo $day2; ?>">
       -
-      <input id='date_month2' name="date_month2" type="text" size="2" maxlength="2" class="style8" value="<?=$month2?>">
+      <input id='date_month2' name="date_month2" type="text" size="2" maxlength="2" class="style8" value="<?PHP echo $month2; ?>">
       -
-	  <input id='date_year2' name="date_year2" type="text" size="4" maxlength="4" class="style8" value="<?=$year2?>">
+	  <input id='date_year2' name="date_year2" type="text" size="4" maxlength="4" class="style8" value="<?PHP echo $year2; ?>">
 &nbsp;<img src="../../images/calendar.gif" alt="calendar" border="0" onClick="showCalendar('date_year2','date_day2','date_month2','date_year2','d m y')">&nbsp; DD-MM-YYYY </font></td>
         </tr-->
         <tr id='file_tr' bgcolor="FFFFFF">
@@ -316,7 +316,7 @@
     </tr>
   </table>
 </form>
-  <p><a href=c_parent.php?month=<?=$_GET[month]?>&school_year=<?=$school_year?>>回上一頁</a></p>
+  <p><a href=c_parent.php?month=<?PHP echo $_GET[month]; ?>&school_year=<?PHP echo $school_year; ?>>回上一頁</a></p>
 </body>
 
 </html>

@@ -1,9 +1,11 @@
-﻿<?
+<?PHP
 session_start();
+
+error_reporting(0);
 
 require_once("../php-bin/teacher_check.php");
 
-$_SESSION[not_admin_cp] = 0;
+$_SESSION['not_admin_cp'] = 0;
 ?>
 <HTML>
 <HEAD>
@@ -40,8 +42,8 @@ body {
     <TD align="center" valign="top" >  <TABLE width="150" border="0" cellpadding="3" cellspacing="1" bgcolor="CCCCCC">
         <TR> 
           <TD height="32" align="center" valign="middle" bgcolor="CCCCCC"><TABLE width="90%" border="0" align="center" cellpadding="5" cellspacing="0">
-            <? if ($_SESSION[admin_level] == 1){ ?>
-            <? 		  
+            <?PHP if ($_SESSION[admin_level] == 1){ ?>
+            <?PHP 		  
             }
             ?>
   <TR>
@@ -51,8 +53,12 @@ body {
         </TR>
         <tr> 
           <td valign="top" bgcolor="#ECECEC" ><TABLE width="90%" border="0" align="center" cellpadding="5" cellspacing="0">
-              <? if ($_SESSION[admin_level] == 1){ ?>
-			  <TR>
+			<TR>
+			  <TD align="left" valign="top"><a href="parent_notice/c_parent.php" target="admin_main">網上檔案總管</a></td>
+			</tr>
+
+              <?PHP if ($_SESSION[admin_level] == 1){ ?>
+			  <!--TR>
                 <TD align="left" valign="top"><a href="teacher/user.php" target="admin_main">老師管理</a></td>
               </tr>
              <TR>
@@ -64,14 +70,14 @@ body {
               <TR>
                 <TD align="left" valign="top"><a href="class/index.php" target="admin_main">班別管理</a>
                 </td>
-              </tr>
+              </tr-->
 			 
-              <? 		  
+              <?PHP 		  
             }
             ?>
 			<!--tr>
 	        <TD align="left" valign="top"><a href="activity/activity.php" target="admin_main">相片庫管理</a></td>
-	        </tr-->
+	        </tr>
 			<TR>
               <TD align="left" valign="top"><a href="apply/apply.php" target="admin_main">網上報名</a></td>
 	        </tr>
@@ -93,7 +99,7 @@ body {
 			<TR>
 			  <TD align="left" valign="top"><a href="javascript:;" target="admin_main">學生報在「網上檔案總管」中添加</a></td>
 			</tr>
-			<!--TR>
+			<TR>
 			  <TD align="left" valign="top"><a href="development/development.php" target="admin_main">專業發展及專題研習</a></td>
 			  </tr-->
 			<!--TR>
@@ -110,8 +116,8 @@ body {
       </TABLE>
       <br>
       <TABLE width="90%" border="0" align="center" cellpadding="5" cellspacing="0">
-        <? if ($_SESSION[admin_level] == 1){ ?>
-        <? 		  
+        <?PHP if ($_SESSION[admin_level] == 1){ ?>
+        <?PHP 		  
             }
             ?>
         <TR>

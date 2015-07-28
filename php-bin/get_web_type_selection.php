@@ -1,4 +1,4 @@
-<?
+<?PHP
     // Get Web Type's Information
     $get_c_sql = "SELECT * FROM `tbl_type` WHERE 1";
     $get_c_result = mysql_query($get_c_sql,$link_id);

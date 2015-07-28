@@ -1,5 +1,7 @@
-<?
+<?PHP
 session_start();
+
+error_reporting(0);
 
 require_once("../php-bin/teacher_check.php");
 

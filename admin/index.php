@@ -80,7 +80,7 @@ if ($_GET[m]==1)
               <?PHP if ($msg!="" ){ ?>
               <font class="style16"><br>
               <br>
-              <?PHP=$msg?>
+              <?PHP echo $msg; ?>
               </font>
               <?PHP } ?>
       </div></td>

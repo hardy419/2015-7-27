@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(0);
 require_once('get_back.php');
 require_once('post_mail.php');
 function connect_mysql() { 

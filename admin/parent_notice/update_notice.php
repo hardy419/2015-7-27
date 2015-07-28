@@ -14,9 +14,9 @@ $result_category = mysql_query($sql_category,$link_id);
 <script LANGUAGE="JavaScript" src="../../js/calendarevents.js" type="text/javascript"></script>
 <script LANGUAGE="JavaScript" src="../../js/calendar.js" type="text/javascript"></script>
 <script LANGUAGE="JavaScript" src="../../js/calendar-en.js" type="text/javascript"></script>
-<form name="form1" method="post" action="update_notice_process.php?id=<?=$get_rows[noticeid]?>" enctype="multipart/form-data">
+<form name="form1" method="post" action="update_notice_process.php?id=<?PHP echo $get_rows['noticeid']; ?>" enctype="multipart/form-data">
 <body>
-<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+<script type='text/javascript' src='../../js/jquery-1.10.2.min.js'></script>
 <script>
 	$(document).ready(function(){
 		//init
@@ -91,7 +91,7 @@ $result_category = mysql_query($sql_category,$link_id);
 			<select name="school_year" id="school_year">
 			<?php
 			$now_Year = date("Y")|0;
-			$doc_Year_str = $get_rows[school_year];
+			$doc_Year_str = $get_rows['school_year'];
 			$start_Year = $now_Year+2;
 			$end_Year = 2000;
 
@@ -110,29 +110,29 @@ $result_category = mysql_query($sql_category,$link_id);
           <td height="25" bgcolor="ECECEC">&nbsp;網頁項目:</td>
           <td height="18" bgcolor="FFFFFF">
 		  <select name="type" id="doc_type">
-            <!--option value="N" <? if ($get_rows["docoment_type"]=="N") { echo "selected"; } ?>>最新消息</option-->
-            <option value="PC" <? if ($get_rows["docoment_type"]=="PC") { echo "selected"; } ?>>家校園地</option>
-            <option value="P" <? if ($get_rows["docoment_type"]=="P") { echo "selected"; } ?>>家長通告</option>
-            <option value="SR" <? if ($get_rows["docoment_type"]=="SR") { echo "selected"; } ?>>學校報告</option>
-            <option value="D" <? if ($get_rows["docoment_type"]=="D") { echo "selected"; } ?>>發展計劃</option>
-            <option value="S" <? if ($get_rows["docoment_type"]=="S") { echo "selected"; } ?>>學校發展計劃</option>
-            <option value="R" <? if ($get_rows["docoment_type"]=="R") { echo "selected"; } ?>>學校發展報告</option>
-            <option value="SH" <? if ($get_rows["docoment_type"]=="SH") { echo "selected"; } ?>>學校發展歷程</option>
-            <option value="SI" <? if ($get_rows["docoment_type"]=="SI") { echo "selected"; } ?>>學生會資訊</option>
-            <option value="MS" <? if ($get_rows["docoment_type"]=="MS") { echo "selected"; } ?>>影片庫</option>
-            <option value="OA" <? if ($get_rows["docoment_type"]=="OA") { echo "selected"; } ?>>傑出成就</option>
-            <option value="LA" <? if ($get_rows["docoment_type"]=="LA") { echo "selected"; } ?>>學習活動</option>
-            <option value="SN" <? if ($get_rows["docoment_type"]=="SN") { echo "selected"; } ?>>學生報</option>
+            <!--option value="N" <?PHP if ($get_rows["docoment_type"]=="N") { echo "selected"; } ?>>最新消息</option-->
+            <option value="PC" <?PHP if ($get_rows["docoment_type"]=="PC") { echo "selected"; } ?>>家校園地</option>
+            <option value="P" <?PHP if ($get_rows["docoment_type"]=="P") { echo "selected"; } ?>>家長通告</option>
+            <option value="SR" <?PHP if ($get_rows["docoment_type"]=="SR") { echo "selected"; } ?>>學校報告</option>
+            <option value="D" <?PHP if ($get_rows["docoment_type"]=="D") { echo "selected"; } ?>>發展計劃</option>
+            <option value="S" <?PHP if ($get_rows["docoment_type"]=="S") { echo "selected"; } ?>>學校發展計劃</option>
+            <option value="R" <?PHP if ($get_rows["docoment_type"]=="R") { echo "selected"; } ?>>學校發展報告</option>
+            <option value="SH" <?PHP if ($get_rows["docoment_type"]=="SH") { echo "selected"; } ?>>學校發展歷程</option>
+            <option value="SI" <?PHP if ($get_rows["docoment_type"]=="SI") { echo "selected"; } ?>>學生會資訊</option>
+            <option value="MS" <?PHP if ($get_rows["docoment_type"]=="MS") { echo "selected"; } ?>>影片庫</option>
+            <option value="OA" <?PHP if ($get_rows["docoment_type"]=="OA") { echo "selected"; } ?>>傑出成就</option>
+            <option value="LA" <?PHP if ($get_rows["docoment_type"]=="LA") { echo "selected"; } ?>>學習活動</option>
+            <option value="SN" <?PHP if ($get_rows["docoment_type"]=="SN") { echo "selected"; } ?>>學生報</option>
 		  </select>
 		  <select name="child_type" id="child_type" style='display:none;'>
             <option value="">請選擇</option>
-            <option value="1" <? if ($get_rows["doc_child_type"]=="1") { echo "selected"; } ?>>五年發展計劃</option>
-            <option value="2" <? if ($get_rows["doc_child_type"]=="2") { echo "selected"; } ?>>三年發展計劃</option>
-            <option value="3" <? if ($get_rows["doc_child_type"]=="3") { echo "selected"; } ?>>三年多元活動津貼計劃</option>
-            <option value="4" <? if ($get_rows["doc_child_type"]=="4") { echo "selected"; } ?>>週年計劃</option>
-            <option value="5" <? if ($get_rows["doc_child_type"]=="5") { echo "selected"; } ?>>發展津貼計劃</option>
-            <option value="6" <? if ($get_rows["doc_child_type"]=="6") { echo "selected"; } ?>>學生支援</option>
-            <option value="7" <? if ($get_rows["doc_child_type"]=="7") { echo "selected"; } ?>>其他</option>
+            <option value="1" <?PHP if ($get_rows["doc_child_type"]=="1") { echo "selected"; } ?>>五年發展計劃</option>
+            <option value="2" <?PHP if ($get_rows["doc_child_type"]=="2") { echo "selected"; } ?>>三年發展計劃</option>
+            <option value="3" <?PHP if ($get_rows["doc_child_type"]=="3") { echo "selected"; } ?>>三年多元活動津貼計劃</option>
+            <option value="4" <?PHP if ($get_rows["doc_child_type"]=="4") { echo "selected"; } ?>>週年計劃</option>
+            <option value="5" <?PHP if ($get_rows["doc_child_type"]=="5") { echo "selected"; } ?>>發展津貼計劃</option>
+            <option value="6" <?PHP if ($get_rows["doc_child_type"]=="6") { echo "selected"; } ?>>學生支援</option>
+            <option value="7" <?PHP if ($get_rows["doc_child_type"]=="7") { echo "selected"; } ?>>其他</option>
 		  </select>
 
           </td>
@@ -141,9 +141,9 @@ $result_category = mysql_query($sql_category,$link_id);
           <td height="18" bgcolor="ECECEC"><font class="style8">&nbsp;類別 :</font></td>
           <td height="18" bgcolor="FFFFFF">
 		  <select name="web_type" id="web_type">
-          <?
+          <?PHP
 			require_once("../../php-bin/get_web_type_selection.php");
-			$type_selected = $get_rows[web_type];
+			$type_selected = $get_rows['web_type'];
 		    require_once("../../php-bin/get_web_type_select_html.php");
           ?>
 		  </select>
@@ -152,66 +152,66 @@ $result_category = mysql_query($sql_category,$link_id);
         <tr>
           <td width="118" height="25" bgcolor="ECECEC"><font class="style8">&nbsp;編號(期數) :</font></td>
           <td width="362" height="18" bgcolor="FFFFFF"><font class="style8">
-            <input name="no" type="text" id="no" value="<?=$get_rows[serialno]?>" size="40" maxlength="40">
+            <input name="no" type="text" id="no" value="<?PHP echo $get_rows['serialno']; ?>" size="40" maxlength="40">
           </font></td>
         </tr>
         <tr class="admin_maintain_form_contents">
           <td height="25" bgcolor="ECECEC" class="admin_maintain_form_contents"><font class="style8">&nbsp;對象 :</font></td>
           <td height="18" bgcolor="FFFFFF"><font class="style8">
-            <input name="target" type="text" id="target" value="<?=$get_rows[target]?>" size="40">
+            <input name="target" type="text" id="target" value="<?PHP echo $get_rows['target']; ?>" size="40">
           </font></td>
         </tr>
         <tr class="admin_maintain_form_contents">
           <td height="25" bgcolor="ECECEC" class="admin_maintain_form_contents"><font class="style8">&nbsp;標題（中文）:</font></td>
           <td height="18" bgcolor="FFFFFF"><font class="style8">
-            <input name="title_cn" type="text" id="title_cn" value="<?=$get_rows[title_cn]?>" size="40">
+            <input name="title_cn" type="text" id="title_cn" value="<?PHP echo $get_rows['title_cn']; ?>" size="40">
           </font></td>
         </tr>
         <tr bgcolor="FFFFFF">
           <td width="101" height="18" bgcolor="ECECEC"><font class="style8">&nbsp;標題（English）:</font></td>
           <td width="496" height="18"><font class="style8">
-            <input name="title_en" type="text" style='width:326px;' value="<?=$get_rows[title_en]?>" maxlength="80">
+            <input name="title_en" type="text" style='width:326px;' value="<?PHP echo $get_rows['title_en']; ?>" maxlength="80">
           </font></td>
         </tr>
         <tr class="admin_maintain_form_contents">
           <td height="25" bgcolor="ECECEC" class="admin_maintain_form_contents"><font class="style8">&nbsp;描述 :</font></td>
           <td height="18" bgcolor="FFFFFF"><font class="style8">
-            <textarea name="description" type="" id="description" style='width:273px;height:70px;resize:none;'><?=$get_rows[description]?></textarea>
+            <textarea name="description" type="" id="description" style='width:273px;height:70px;resize:none;'><?PHP echo $get_rows['description']; ?></textarea>
           </font></td>
         </tr>
         <tr class="admin_maintain_form_table">
           <td bgcolor="ECECEC">&nbsp;Link Text:</td>
-          <td bgcolor="FFFFFF"><input name="link_text" type="text" id="link_text" value="<?=$get_rows[link_text]?>" size="40"></td>
+          <td bgcolor="FFFFFF"><input name="link_text" type="text" id="link_text" value="<?PHP echo $get_rows['link_text']; ?>" size="40"></td>
         </tr>
         <tr class="admin_maintain_form_table">
           <td bgcolor="ECECEC">&nbsp;Link URL:</td>
-          <td bgcolor="FFFFFF"><input name="link_url" type="text" id="link_url" value="<? echo ($get_rows[link_url] == "" ? "http://" : $get_rows[link_url])?>" size="40"><span style='color:red;'>連接地址務必以 http:// 開頭</span></td>
+          <td bgcolor="FFFFFF"><input name="link_url" type="text" id="link_url" value="<?PHP echo ($get_rows['link_url'] == "" ? "http://" : $get_rows['link_url']); ?>" size="40"><span style='color:red;'>連接地址務必以 http:// 開頭</span></td>
         </tr>
         <tr class="admin_maintain_form_table">
           <td bgcolor="ECECEC">&nbsp;在新視窗開啟:</td>
-          <td bgcolor="FFFFFF"><input name="new_window" type="radio" value="Y" <? echo ($get_rows[link_open_window] == "Y" ? "checked" : "")?>>
+          <td bgcolor="FFFFFF"><input name="new_window" type="radio" value="Y" <?PHP echo ($get_rows['link_open_window'] == "Y" ? "checked" : ""); ?>>
     是
-      <input name="new_window" type="radio" value="N" <? echo ($get_rows[link_open_window] == "N" ? "checked" : "")?>>
+      <input name="new_window" type="radio" value="N" <?PHP echo ($get_rows['link_open_window'] == "N" ? "checked" : ""); ?>>
     否</td>
         </tr>
         <tr>
           <td height="25" bgcolor="ECECEC"><font class="style8">&nbsp;日期:</font></td>
           <td height="18" bgcolor="FFFFFF"><font class="style8">
-      <input id='date_day' name="date_day" type="text" size="2" maxlength="2" class="style8" value="<?=substr($get_rows[date], 8,2)?>">
+      <input id='date_day' name="date_day" type="text" size="2" maxlength="2" class="style8" value="<?PHP echo substr($get_rows['date'], 8,2); ?>">
       -
-      <input id='date_month' name="date_month" type="text" size="2" maxlength="2" class="style8" value="<?=substr($get_rows[date], 5,2)?>">
+      <input id='date_month' name="date_month" type="text" size="2" maxlength="2" class="style8" value="<?PHP echo substr($get_rows['date'], 5,2); ?>">
       -
-	  <input id='date_year' name="date_year" type="text" size="4" maxlength="4" class="style8" value="<?=substr($get_rows[date], 0,4)?>">
+	  <input id='date_year' name="date_year" type="text" size="4" maxlength="4" class="style8" value="<?PHP echo substr($get_rows['date'], 0,4); ?>">
 &nbsp;<img src="../../images/calendar.gif" alt="calendar" border="0" onClick="showCalendar('date_year','date_day','date_month','date_year','d m y')">&nbsp; DD-MM-YYYY</font></td>
         </tr>
         <!--tr>
           <td height="25" valign="top" bgcolor="ECECEC">&nbsp;有效日期:</td>
           <td height="18" valign="top" bgcolor="FFFFFF"><font class="style8">
-      <input id='date_day2' name="date_day2" type="text" size="2" maxlength="2" class="style8" value="<?=substr($get_rows[exp_date], 8,2)?>">
+      <input id='date_day2' name="date_day2" type="text" size="2" maxlength="2" class="style8" value="<?PHP echo substr($get_rows['exp_date'], 8,2); ?>">
       -
-      <input id='date_month2' name="date_month2" type="text" size="2" maxlength="2" class="style8" value="<?=substr($get_rows[exp_date], 5,2)?>">
+      <input id='date_month2' name="date_month2" type="text" size="2" maxlength="2" class="style8" value="<?PHP echo substr($get_rows['exp_date'], 5,2); ?>">
       -
-	  <input id='date_year2' name="date_year2" type="text" size="4" maxlength="4" class="style8" value="<?=substr($get_rows[exp_date], 0,4)?>">
+	  <input id='date_year2' name="date_year2" type="text" size="4" maxlength="4" class="style8" value="<?PHP echo substr($get_rows['exp_date'], 0,4); ?>">
       
 &nbsp;<img src="../../images/calendar.gif" alt="calendar" border="0" onClick="showCalendar('date_year2','date_day2','date_month2','date_year2','d m y')">&nbsp; DD-MM-YYYY</font></td>
         </tr-->
@@ -219,19 +219,19 @@ $result_category = mysql_query($sql_category,$link_id);
           <td height="25" valign="top" bgcolor="ECECEC">&nbsp;附件:</td>
           <td height="18" valign="top" bgcolor="FFFFFF"><input id='file' type="file" name="file">
               <br>
-              <? if (file_exists("../../userUpload/attachment/" . $get_rows["docoment_name"]) && $get_rows["docoment_name"] !=""  && $delete != 1){ ?>
+              <?PHP if (file_exists("../../userUpload/attachment/" . $get_rows["docoment_name"]) && $get_rows["docoment_name"] !=""  && $delete != 1){ ?>
 &nbsp;<font color=red>(你目前而上載檔案
-      <?=$get_rows["docoment_name"]?>
-      <a onClick="return confirm('你確定要刪除這份檔案嗎?')" href="?year=<?=$_GET[year]?>&month=<?=$_GET[month]?>&id=<?=$_GET[id]?>&Dfile=1" class="style8">刪除檔案</a> )</font>
-      <? } ?>
+      <?PHP echo $get_rows["docoment_name"]; ?>
+      <a onClick="return confirm('你確定要刪除這份檔案嗎?')" href="?year=<?PHP echo $_GET['year']; ?>&month=<?PHP echo $_GET['month']; ?>&id=<?PHP echo $_GET['id']; ?>&Dfile=1" class="style8">刪除檔案</a> )</font>
+      <?PHP } ?>
           </td>
         </tr>
         <tr class="admin_maintain_form_table">
           <td bgcolor="ECECEC">&nbsp;最新消息:</td>
           <td bgcolor="FFFFFF">
-            <input id='is_news' name="is_news" type="radio" value="Y" <? if($get_rows[is_news]=='Y') { echo "checked"; } ?>>
+            <input id='is_news' name="is_news" type="radio" value="Y" <?PHP if($get_rows['is_news']=='Y') { echo "checked"; } ?>>
             是
-            <input id='is_news' name="is_news" type="radio" value="N" <? if($get_rows[is_news]=='N') { echo "checked"; } ?>>
+            <input id='is_news' name="is_news" type="radio" value="N" <?PHP if($get_rows['is_news']=='N') { echo "checked"; } ?>>
             否 </td>
         </tr>
 		 <tr id='news_tr1' style='display:none;' bgcolor="FFFFFF">
@@ -242,9 +242,9 @@ $result_category = mysql_query($sql_category,$link_id);
         </tr>
         <tr id='banner_tr1' style='display:none;' bgcolor="FFFFFF">
           <td height="18" bgcolor="ECECEC">&nbsp;主頁Banner顯示:</td>
-          <td height="18"><input name="is_banner" type="radio" value="Y" <? if($get_rows[is_banner]=='Y') { echo "checked"; } ?>>
+          <td height="18"><input name="is_banner" type="radio" value="Y" <?PHP if($get_rows['is_banner']=='Y') { echo "checked"; } ?>>
             是
-              <input name="is_banner" type="radio" value="N"  <? if($get_rows[is_banner]=='N') { echo "checked"; } ?>>
+              <input name="is_banner" type="radio" value="N"  <?PHP if($get_rows['is_banner']=='N') { echo "checked"; } ?>>
           否</td>
         </tr>
         <tr id='banner_tr2' style='display:none;' bgcolor="FFFFFF">
@@ -254,9 +254,9 @@ $result_category = mysql_query($sql_category,$link_id);
 				<img src='../../userUpload/banner/small/<?php echo $get_rows["banner_photo"];?>'/>
 			<?php }?><br/>
             <input type="file" name="file_banner">
-			 <? if (file_exists("../../userUpload/banner/" . $get_rows["banner_photo"]) && $get_rows["banner_photo"] !=""  && $delete != 1){ ?>
-&nbsp;<font color=red>(你目前已上載檔案 <a id='del_file' onClick="return confirm('你確定要刪除這份檔案嗎?')" href="?year=<?=$_GET[year]?>&month=<?=$_GET[month]?>&id=<?=$_GET[id]?>&Dfile=3" class="style8">刪除檔案</a> )
-      <? } ?>
+			 <?PHP if (file_exists("../../userUpload/banner/" . $get_rows["banner_photo"]) && $get_rows["banner_photo"] !=""  && $delete != 1){ ?>
+&nbsp;<font color=red>(你目前已上載檔案 <a id='del_file' onClick="return confirm('你確定要刪除這份檔案嗎?')" href="?year=<?PHP echo $_GET['year']; ?>&month=<?PHP echo $_GET['month']; ?>&id=<?PHP echo $_GET['id']; ?>&Dfile=3" class="style8">刪除檔案</a> )
+      <?PHP } ?>
           </font></td>
         </tr>
         <tr id='banner_tr3' style='display:none;' bgcolor="FFFFFF">
@@ -269,21 +269,21 @@ $result_category = mysql_query($sql_category,$link_id);
           <td height="25" valign="top" bgcolor="ECECEC">&nbsp;封面圖片:</td>
           <td height="18" valign="top" bgcolor="FFFFFF"><input type="file" name="cover_Photo">
               <br>
-              <? if (file_exists("../../userUpload/cover_Photo/" . $get_rows["cover_Photo"]) && $get_rows["cover_Photo"] !=""  && $delete != 1){ ?>
+              <?PHP if (file_exists("../../userUpload/cover_Photo/" . $get_rows["cover_Photo"]) && $get_rows["cover_Photo"] !=""  && $delete != 1){ ?>
 &nbsp;<font color=red>(你目前已上載檔案
-      <?=$get_rows["cover_Photo"]?>
-      <a href="?year=<?=$_GET[year]?>&month=<?=$_GET[month]?>&id=<?=$_GET[id]?>&Dfile=2" onClick="return confirm('你確定要刪除這份檔案嗎?')" class="style8">刪除檔案</a> )</font>
-      <? } ?>
+      <?PHP echo $get_rows["cover_Photo"]; ?>
+      <a href="?year=<?PHP echo $_GET['year']; ?>&month=<?PHP echo $_GET['month']; ?>&id=<?PHP echo $_GET['id']; ?>&Dfile=2" onClick="return confirm('你確定要刪除這份檔案嗎?')" class="style8">刪除檔案</a> )</font>
+      <?PHP } ?>
           <p style='color:red;'>(學生報專用 建議圖片大小200*150)</p></td>
         </tr>
 		<!--tr>
 			<td height="18" bgcolor="ECECEC">&nbsp;瀏覽權限:</td>
 			<td height="18" bgcolor="FFFFFF">
 					<select name='acc_type' id='acc_type'>
-						<option value='N' <? if ($get_rows["access_type"]=="N") { echo "selected"; } ?>>遊客</option>
-						<option value='S' <? if ($get_rows["access_type"]=="S") { echo "selected"; } ?>>學生</option>
-						<option value='T' <? if ($get_rows["access_type"]=="T") { echo "selected"; } ?>>教師</option>
-						<option value='P' <? if ($get_rows["access_type"]=="P") { echo "selected"; } ?>>家長</option>
+						<option value='N' <?PHP if ($get_rows["access_type"]=="N") { echo "selected"; } ?>>遊客</option>
+						<option value='S' <?PHP if ($get_rows["access_type"]=="S") { echo "selected"; } ?>>學生</option>
+						<option value='T' <?PHP if ($get_rows["access_type"]=="T") { echo "selected"; } ?>>教師</option>
+						<option value='P' <?PHP if ($get_rows["access_type"]=="P") { echo "selected"; } ?>>家長</option>
 					</select>
 			</td>
 		</tr-->
@@ -345,7 +345,7 @@ $result_category = mysql_query($sql_category,$link_id);
     </tr>
 </table>
 
-  <p><a href=c_parent.php?school_year=<?=$_GET[school_year]?>&month=<?=$_GET[month]?>&id=<?=$_GET[id]?>>回上一頁</a></p>
+  <p><a href=c_parent.php?school_year=<?PHP echo $_GET['school_year']; ?>&month=<?PHP echo $_GET['month']; ?>&id=<?PHP echo $_GET['id']; ?>>回上一頁</a></p>
 </body>
 </form>
 </html>
