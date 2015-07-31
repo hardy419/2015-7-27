@@ -1,4 +1,4 @@
-﻿<?
+<?
 
     require("../../php-bin/function.php");
 

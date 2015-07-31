@@ -1,3 +1,6 @@
+<?PHP
+require("../php-bin/function.php");
+?>
 <!doctype html>
 <html>
 <head>
@@ -73,7 +76,6 @@
     <div class="py_tTable pa">
       <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <?PHP
-require("../php-bin/function.php");
 if (isset ($_GET['p'])) {
     $page = $_GET['p'];
 }
@@ -81,10 +83,10 @@ else {
     $page = 1;
 }
 $num = 6;
-$count = mysql_query('SELECT COUNT(*) AS count FROM tbl_notice WHERE is_news="Y"', $link_id);
+$count = mysql_query('SELECT COUNT(*) AS count FROM tbl_notice WHERE web_type=3 ORDER BY `date` DESC', $link_id);
 $count = mysql_fetch_array($count, MYSQL_ASSOC);
 $count = $count['count'];
-$rows = mysql_query('SELECT * FROM tbl_notice WHERE is_news="Y" LIMIT '.($num*($page-1)).','.$num,$link_id);
+$rows = mysql_query('SELECT * FROM tbl_notice WHERE web_type=3 ORDER BY `date` DESC LIMIT '.($num*($page-1)).','.$num,$link_id);
 for ($i=0; $row=mysql_fetch_array($rows,MYSQL_ASSOC); $i++){
 ?>
         <tr>
@@ -103,11 +105,11 @@ for ($i=0; $row=mysql_fetch_array($rows,MYSQL_ASSOC); $i++){
 
       <div style="clear:both"></div>
       <div class="pagination">
-        <a <?PHP if ($page > 1) echo 'href="news.php?p='.($page-1).'"'; ?>>&lt;&lt;</a>
+        <a <?PHP if ($page > 1) echo 'href="activity.php?p='.($page-1).'"'; ?>>&lt;&lt;</a>
     <?PHP for ($pi=1; $pi<=(int)(($count-1)/$num)+1; ++$pi) { ?>
-        <a href="news.php?p=<?PHP echo $pi; ?>"><?PHP echo $pi; ?></a>
+        <a href="activity.php?p=<?PHP echo $pi; ?>"><?PHP echo $pi; ?></a>
     <?PHP } ?>
-        <a <?PHP if ($page < (int)(($count-1)/$num)+1) echo 'href="news.php?p='.($page+1).'"'; ?>>&gt;&gt;</a>
+        <a <?PHP if ($page < (int)(($count-1)/$num)+1) echo 'href="activity.php?p='.($page+1).'"'; ?>>&gt;&gt;</a>
       </div>
    </div>
 

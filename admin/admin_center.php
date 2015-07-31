@@ -56,6 +56,9 @@ body {
 			<TR>
 			  <TD align="left" valign="top"><a href="parent_notice/c_parent.php" target="admin_main">網上檔案總管</a></td>
 			</tr>
+			<TR>
+			  <TD align="left" valign="top"><a href="calender/news_others.php" target="admin_main">最新消息</a> </td>
+			  </tr>
 			  <TR>
                 <TD align="left" valign="top"><a href="teacher/user.php" target="admin_main">老師管理</a></td>
               </tr>

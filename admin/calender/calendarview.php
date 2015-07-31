@@ -1,4 +1,4 @@
-﻿<?
+<?
 require("../../php-bin/function.php");
 
 	$query="SELECT * FROM `tbl_calendar` WHERE  `calendarid` = '$_GET[id]'";

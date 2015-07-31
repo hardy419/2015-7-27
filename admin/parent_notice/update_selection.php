@@ -1,4 +1,4 @@
-﻿<?PHP
+<?PHP
 
     require("../../php-bin/function.php");
 

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 	require("../../php-bin/function.php");
 	
 	$school_year = $_GET[school_year];

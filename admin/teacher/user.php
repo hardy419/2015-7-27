@@ -1,4 +1,5 @@
-﻿<?
+<?
+error_reporting(0);
 // admin checking
 require_once("../../php-bin/admin_check.php");
     // Selection

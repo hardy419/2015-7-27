@@ -1,4 +1,4 @@
-﻿<?
+<?
 require_once("update_selection.php");
 //calendarid post_id poster date title content posttime 
     if ($get_rows[type] == "S"){
@@ -20,7 +20,7 @@ require_once("update_selection.php");
 <script LANGUAGE="JavaScript" src="../../js/calendar.js" type="text/javascript"></script>
 <script LANGUAGE="JavaScript" src="../../js/calendar-en.js" type="text/javascript"></script>
 </head>
-<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+<script type='text/javascript' src='../../js/jquery-1.10.2.min.js'></script>
 <?php if($get_rows['type'] == "S"){ ?>
 <script>
 	$(document).ready(function(){

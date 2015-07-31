@@ -65,7 +65,7 @@ body {
 	background: url(../images/notice_title.jpg) no-repeat;
 }
 #wrap .col_01 .notice ul {
-	margin-top: 16px;
+	margin-top: 12px;
 }
 #wrap .col_01 .notice ul li {
 	margin-top: 5px;
@@ -98,7 +98,7 @@ body {
 	background: url(../images/leader_title.jpg) no-repeat;
 }
 #wrap .col_02 .leader ul {
-	margin-top: 16px;
+	margin-top: 12px;
 }
 #wrap .col_02 .leader ul li {
 	margin-top: 5px;
@@ -161,7 +161,7 @@ body {
 	background: url(../images/news_title.jpg) no-repeat;
 }
 #wrap .col_03 .news ul {
-	margin-top: 16px;
+	margin-top: 12px;
 }
 #wrap .col_03 .news ul li {
 	margin-top: 5px;

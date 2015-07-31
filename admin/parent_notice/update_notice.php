@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 require_once("update_selection.php");
 
 $sql_category = "SELECT category FROM `tbl_notice` GROUP BY category";

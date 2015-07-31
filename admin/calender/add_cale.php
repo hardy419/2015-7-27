@@ -1,4 +1,4 @@
-﻿<? require("../../php-bin/function.php"); ?>
+<? require("../../php-bin/function.php"); ?>
 <?
 
     if ($_GET[type] == "S"){
@@ -32,7 +32,7 @@
 <? } else { ?>
 <img src="admin_label.gif" width="500" height="35"><br>
 <? } ?>
-<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+<script type='text/javascript' src='../../js/jquery-1.10.2.min.js'></script>
 
 <?php if($_GET[type] == "S"){ ?>
 <script>

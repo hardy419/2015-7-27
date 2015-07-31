@@ -1,6 +1,4 @@
-﻿<?PHP
-session_start();
-error_reporting(0);
+<?PHP
 require("../../php-bin/function.php");
 require("./c_parent_process.php");
 

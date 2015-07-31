@@ -1,4 +1,4 @@
-﻿<?
+<?
     require("../../php-bin/function.php");
     require("../../php-bin/pagedisplay.php");
 	$page = 1;

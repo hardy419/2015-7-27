@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 require("../../php-bin/function.php");
 require_once("../../php-bin/image_resize.php");
