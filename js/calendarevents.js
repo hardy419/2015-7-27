@@ -28,6 +28,12 @@ function closeHandler(cal)
 	// don't check mousedown on document anymore (used to be able to hide the
 	// calendar when someone clicks outside it, see the showCalendar function).
 	Calendar.removeEvent(document, "mousedown", checkCalendar);
+	try
+	{
+		if( Make_Request.constructor==Function )
+			Make_Request();
+	}
+	catch(e){}
 }
 
 // This gets called when the user presses a mouse button anywhere in the
@@ -52,6 +58,7 @@ function checkCalendar(ev)
 // calendar if the click was outside.
 function showCalendar(id, dayId, monthId, yearId, format) 
 {
+
   var el = document.getElementById(id);
   if (calendar != null) 
   {
@@ -98,4 +105,48 @@ function isDisabled(date)
 {
 	return false;
 }
+function showCalendarWithOffset(id, dayId, monthId, yearId, format) 
+{
+  var el = document.getElementById(id);
+  if (calendar != null) 
+  {
+    // we already have some calendar created
+    calendar.hide();                 // so we hide it first.
+  } 
+  else 
+  {
+    // first-time call, create the calendar.
+    var cal = new Calendar(true, null, selected, closeHandler);
+    calendar = cal;                  // remember it in the global var
+    cal.setRange(1995, 2050);        // min/max year allowed.
+    cal.create();
+  }
+  calendar.setDateFormat(format);    // set the specified date format
+  calendar.parseDate(el.value);      // try to parse the text in field
+  calendar.sel = el;                 // inform it what input field we use
+  calendar.selDay = document.getElementById(dayId);
+  calendar.selMonth = document.getElementById(monthId);
+  calendar.selYear = document.getElementById(yearId);
+  calendar.showAtElement(el);        // show the calendar below it
+	//
+	
+	var p = Calendar.getAbsolutePos(el);
+	//calendar.showAt(p.x, p.y)
+	calendar.showAt(p.x,(p.y-186));
+	
+	//var cc = calendar.element;
+	//var ccc = Calendar.getAbsolutePos(cc);
+	
+	
+	
+   // catch "mousedown" on document
+  Calendar.addEvent(document, "mousedown", checkCalendar);
+  return false;
+ 
+  
+}
 
+var MINUTE = 60 * 1000;
+var HOUR = 60 * MINUTE;
+var DAY = 24 * HOUR;
+var WEEK = 7 * DAY;

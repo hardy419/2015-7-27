@@ -1,12 +1,14 @@
 <?php
-session_start();
-error_reporting(0);
-require_once('get_back.php');
-require_once('post_mail.php');
-function connect_mysql() { 
-	global $link_id;
-	$link_id = @mysql_connect("localhost", "root", "");
-	mysql_set_charset('utf8', $link_id); 
+require_once(dirname(dirname(__FILE__))."/config.inc.php");
+require_once("lib_config.php");
+ob_start();
+if( ! session_id() )
+	session_start();
+ini_set('date.timezone','Asia/Shanghai');
+function connect_mysql() {
+	global $link_id, $config;
+	$link_id = @mysql_connect($config["db_server"]['host'], $config["db_server"]['user'], $config["db_server"]['pass']);
+	mysql_query( 'SET CHARACTER SET utf8', $link_id );
 }
 function close_mysql() {
 	global $link_id;
@@ -23,43 +25,61 @@ connect_mysql();
 if (!$link_id) {
 	die("The Server is now very busy! Please try again later!");
 }
-$db_name = "cpcydss_db";
-mysql_select_db($db_name);
-//字符串截取功能
-function get_sub_string($string,$limit=12,$str="..."){
-	$charset = "UTF-8";
-	if(mb_strlen($string,$charset)*2>$limit){
-		return mb_strcut($string,0,$limit, $charset).$str;
-	}else{
-		return $string;
-	}
+mysql_select_db($config["db_server"]['db']);
+mysql_query( 'SET CHARACTER SET utf8', $link_id );
+function EncodeHTMLTag( $str )
+{
+	return str_replace("&amp;", "&", htmlspecialchars( trim($str), ENT_QUOTES ) );
+	//return str_replace(",", "&#044", $newcode);
 }
-function checkLogin(){
-	if(isset($_SESSION['UID']) && !empty($_SESSION['UID']) && isset($_SESSION['UTPYE']) && !empty($_SESSION['UTPYE'])){
-	
-		if($_SESSION['UTPYE'] == 'T'){
-		
-			$sql_checkLG = "SELECT * from tbl_teacher where `teacher_id` = '".$_SESSION['UID']."';";
-			
-		}else if($_SESSION['UTPYE'] == 'S'){
-		
-			$sql_checkLG = "SELECT * from tbl_student where `student_id` = '".$_SESSION['UID']."';";
-			
-		}else if($_SESSION['UTPYE'] == 'P'){
-			$sql_checkLG = "SELECT * from tbl_parent where `id` = '".$_SESSION['UID']."';";
-		}
-		
-		$get_CheckLG_result = mysql_query($sql_checkLG);
-		if(mysql_num_rows($get_CheckLG_result) == 1){
-			return true;
-			
-		}else{
-			return false;
-			
-		}
-		
-	}else{
-		return false;
+function DecodeHTMLTag( $str )
+{
+	return str_replace("&amp;", "&", $str);
+}
+if (!function_exists('htmlspecialchars_decode')) {
+       function htmlspecialchars_decode($str, $options="") {
+               $trans = get_html_translation_table(HTML_SPECIALCHARS, $options);
+               $decode = ARRAY();
+               foreach ($trans AS $char=>$entity) {
+                       $decode[$entity] = $char;
+               }
+               $str = strtr($str, $decode);
+               return $str;
+       }
+}
+
+function CutStr( $str, $cut_length=15, $attStr='...')
+{
+	if( strlen($str)>$cut_length )
+		return substr($str, 0, $cut_length-1).$attStr;
+	return $str;
+}
+
+/*消息提醒*/
+function Msg($status){
+	switch ($status){
+		case 1:
+			$msg='增加成功!';
+			break;
+		case 2:
+			$msg='增加失敗';
+			break;
+		case 3:
+			$msg='更新成功!';
+			break;
+		case 4:
+			$msg='更新失敗';
+			break;
+		case 5:
+			$msg='刪除成功！';
+			break;
+		case 6:
+			$msg='刪除失敗';
+			break;
+		default:
+			$msg="操作失誤";
 	}
+
+	return $msg;
 }
 ?>

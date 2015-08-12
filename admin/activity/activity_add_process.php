@@ -1,33 +1,57 @@
-<?
-	// admin checking
-	require_once("../../php-bin/admin_check.php");
+<?php   header("Content-Type:text/html;charset=utf-8"); 
+require_once("../../admin.inc.php");
 
-	// Connect Database
-	require("../../php-bin/function.php");
+// Connect Database
+require_once("../../php-bin/function.php");
 
-	
-	$date = $_POST[date_year] . "-" .  $_POST[date_month] . "-" .  $_POST[date_day];
-	
-    if (isset($_POST["name"])){
+// access control checking
+require_once("z_access_control.php");
 
-      	// Insert new data
-      	$add_sql = "INSERT INTO `tbl_activity` ( `date` , `name` , `description` , `modified_by` , `modified_date`, `category` , `is_news` ) VALUES ('".$date."', '".$_POST["name"]."', '".$_POST["desc"]."', '".$_SESSION[name]."', now(), '".$_POST[category]."' , '".$_POST['is_news']."');";
-      
-    
-	  	$run_status = mysql_query($add_sql);
+$year = 0;
+$sql_date = "NULL";
+$date_year = ($_POST[date_year]|0);
+$date_month = ($_POST[date_month]|0);
+$date_day = ($_POST[date_day]|0);
+if( $date_day>0 && $date_day<=31 && $date_month>0 && $date_month<=12 && $date_year>=1990 )
+{
+	$sql_date = "'$date_year-$date_month-$date_day'";
+	//if( $date_month >= 9 )
+		$year = $date_year;
+	//else
+		//$year = $date_year-1;
+}
 
-	  	if (!$run_status) {
-		  	$msg = str_replace(" ", "+", "Query failed: " . mysql_error($link_id));
-      	} 
-      	else{
-        	$msg = "活動新增完成";
-      	}
 
-      	mysql_close();
-      
-      	//echo $add_sql;
-      	header("Location:activity.php?msg=$msg&t_name=$_POST[name]");
+$name = EncodeHTMLTag($_POST['name']);
+$desc = EncodeHTMLTag($_POST['desc']);
+$participant = addslashes($_POST['participant']);
+$class_year = $_POST[class_year]|0;
+$type_id = $_POST[type_id]|0;
 
-    }
+
+
+//access_detail_check( $type_id );
+
+
+
+if( $name != "" )
+{
+
+	// Insert new data
+	$add_sql = " INSERT INTO `tbl_activity` ( `date` , `year` , `name` , `participant` , `description` , `modified_by` , `modified_date`, `type_id`, `class_year` )
+ VALUES ($sql_date, $year, '$name', '$participant', '$desc', '".$_SESSION["plk_admin_user_name"]."', now(), $type_id, $class_year ) ";
+	mysql_query("set names utf8");
+	$run_status = mysql_query($add_sql);
+
+	if (!$run_status)
+		$msg = str_replace(" ", "+", "Query failed: " . mysql_error($link_id));
+	else
+		$msg = "New record had been added successfully.";
+
+	mysql_close();
+
+	header("Location:activity.php?msg=$msg&t_name=&type_id=".$type_id);
+
+}
 
 ?>

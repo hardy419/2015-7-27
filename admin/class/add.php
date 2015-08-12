@@ -1,3 +1,12 @@
+<?php
+
+// admin checking
+require_once("../../admin.inc.php");
+
+// access control checking
+require_once("z_access_control.php");
+
+?>
 <html>
 <head>
 <title>班級管理 </title>
@@ -70,20 +79,20 @@
                   <tr bgcolor="FFFFFF">
                     <td align="right">年級:</td>
                     <td><select name="class_year" id="class_year">
-                        <option value="1" selected>一年級</option>
-                        <option value="2">二年級</option>
-                        <option value="3">三年級</option>
-                        <option value="4">四年級</option>
-                        <option value="5">五年級</option>
-                        <option value="6">六年級</option>
-                        <option value="7">七年級</option>
+                        <option value="1" selected>一年</option>
+                        <option value="2">二年</option>
+                        <option value="3">三年</option>
+                        <option value="4">四年</option>
+                        <option value="5">五年</option>
+                        <option value="6">六年</option>
+                        <option value="7">Backup</option>
                     </select></td>
                   </tr>
                   <tr valign="middle" bgcolor="ECECEC">
                     <td>&nbsp;</td>
-                    <td><input type="submit" name="Submit" value="    確定新增    ">
-                      <input type="reset" name="Submit2" value="重設">
-					  <button type='button' onclick='javascript:history.go(-1);'>返回</button></td>
+                    <td><input type="submit" name="Submit" value="    確定新增    "> &nbsp; 
+                      <input type="reset" name="Submit2" value="重設"> &nbsp; 
+                      <input type="button" value="返回" onClick="history.go(-1)"></td>
                   </tr>
                 </form>
               </table>

@@ -1,58 +1,117 @@
-<?
+<?php   header("Content-Type:text/html;charset=utf-8"); 
 
-    require("../../php-bin/function.php");
+// admin checking
 
-    if (!isset($_GET["id"])){  // GET and POST
-
-		echo ("<script language='javascript'>");
-
-		echo ("alert(\"No User ID supplied\");");
-
-		echo ("history.go(-1)");
-
-		echo ("</script>");
-
-		exit();
-
-    }else{
-        $u_id = $_GET["id"];
-    }
+require_once("../../admin.inc.php");
 
 
 
-if ($_GET[Dfile] == 1 ){
-	// check the having file.
-	$sql = "SELECT `file_name` FROM `tbl_calendar` WHERE calendarid = '$_GET[id]'";
-	$result = mysql_query($sql,$link_id); 
-	$get_rows = mysql_fetch_array($result);
+// access control checking
 
-	if ($get_rows[file_name] != ""){
-		unlink("../../calendar/attachment/". $get_rows[file_name]);
-		
-		$sql = "update `tbl_calendar` SET `file_name` = '' WHERE calendarid = '$_GET[id]'";
-		mysql_query($sql,$link_id); 
-	}
+require_once("z_access_control.php");
+
+
+
+// Connect Database
+
+require_once("../../php-bin/function.php");
+
+
+
+
+
+
+
+$c_id = $_GET["id"]|0;
+
+
+
+
+
+
+
+
+
+if( $c_id == 0 )
+
+{  // GET and POST
+
+
+
+	echo ("<script language='javascript'>");
+
+	echo ("alert(\"No User ID supplied\");");
+
+	echo ("history.go(-1)");
+
+	echo ("</script>");
+
+	exit();
+
 }
 
-if ($_GET[Dfile] == 2 ){
+
+
+
+
+
+
+
+
+if ($_GET[Dfile] == 1 )
+
+{
+
 	// check the having file.
-	$sql = "SELECT `banner_photo` FROM `tbl_calendar` WHERE calendarid = '$_GET[id]'";
+
+	$sql = "SELECT `file_name` FROM `tbl_calendar` WHERE calendarid=$c_id ";
+
 	$result = mysql_query($sql,$link_id); 
+
 	$get_rows = mysql_fetch_array($result);
 
-	if ($get_rows[banner_photo] != ""){
-		unlink("../../calendar/attachment/". $get_rows[banner_photo]);
-		
-		$sql = "update `tbl_calendar` SET `banner_photo` = '' WHERE calendarid = '$_GET[id]'";
+
+
+	if ($get_rows[file_name] != "")
+
+	{
+
+		unlink("../../calendar_attachment/". $get_rows[file_name]);
+
+	
+
+		$sql = "update `tbl_calendar` SET `file_name`='' WHERE calendarid=$c_id ";
+
 		mysql_query($sql,$link_id); 
+
 	}
+
 }
 
-    // Get User's Information
-    $get_sql = "SELECT * FROM `tbl_calendar` WHERE  `calendarid` = '".$u_id."'";
 
 
-    $get_result = mysql_query($get_sql,$link_id);
-	$get_rows=mysql_fetch_array($get_result,MYSQL_BOTH);
+
+
+
+
+
+
+// Get User's Information
+
+$get_sql = "SELECT * FROM `tbl_calendar` WHERE  `calendarid`=$c_id ";
+
+
+
+
+
+$get_result = mysql_query($get_sql,$link_id);
+
+$get_rows=mysql_fetch_array($get_result,MYSQL_BOTH);
+
 mysql_close();
+
+
+
+
+
 ?>

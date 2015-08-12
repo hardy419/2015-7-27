@@ -1,0 +1,181 @@
+#header{width:1100px; margin:10px auto 0px; height:102px;}
+#logo{width:411px; height:102px; float:left;}
+#links{float:right;}
+.contentbox{position:relative;}
+
+div,ul,li,span,a{
+margin:0;
+padding:0;
+}
+a{text-decoration:none;}
+a:link{text-decoration:none;}
+#banner_learn{width:1100px; height:239px;  background:url(../images/banner_learn.jpg) no-repeat; margin:0 auto;}
+#banner_learn .banner_learn_img{ width:1200px; height:239px;}
+
+
+#banner_about{width:1100px; height:239px;  background:url(../images/banner_about01.jpg) no-repeat;margin:0 auto;}
+#banner_about .banner_about_img{ width:1200px; height:239px;}
+
+
+#banner_growup{width:1100px; height:239px;  background:url(../images/banner_growup.jpg) no-repeat;margin:0 auto;}
+#banner_growup .banner_growup_img{ width:1200px; height:239px;}
+
+
+#banner_news{width:1100px; height:239px;  background:url(../images/banner_news.jpg) no-repeat;margin:0 auto;}
+#banner_news .banner_news_img{ width:1200px; height:239px;}
+
+#banner_teamwork{width:1100px; height:239px;  background:url(../images/banner_keioi.jpg) no-repeat;margin:0 auto;}
+#banner_teamwork .banner_teamwork_img{ width:1200px; height:239px;}
+
+
+#banner_download{width:1100px; height:239px;  background:url(../images/banner_about01.jpg) no-repeat;margin:0 auto;}
+#banner_download .banner_download_img{ width:1200px; height:239px;}
+
+.topbanner{width:100%;/*background:url(../images/index_bg.jpg) repeat-x;*/ margin:0 auto; text-align:center}
+.topbannerimg{background:url(../images/index.jpg) no-repeat; width:1200px; height:146px; margin:0 auto;}
+
+
+.wrap{
+    margin:0 auto;
+	width:1200px;
+	}
+.nav{
+	width:100%;
+	/* background:#74AFE3; */
+	background:#5dac59;
+	/*9de09b*/
+	height:35px;
+	}
+#menu{
+	height:35px;
+	margin:0 auto;
+	width:1100px;
+	font-weight:bold;
+	}
+.menu>li{
+	position:relative;
+	float:left;
+	list-style:none;
+	}
+.nav_link{
+	display:block;
+	width:182px;
+	text-align:center;
+	height:35px;
+	line-height:35px;
+	 border-right:1px solid #9de09b;
+	/* height:31px;
+	line-height:31px; */
+	text-decoration:none;
+	}
+.menu li:last-child .nav_link{border-right:none;}	
+.nav_link span{ color:#F5FCFF; font-family:微软雅黑;}
+.nav_link:hover span{ color:#EFE9AB; }
+
+
+/****er ji****/
+.second_menu_box{
+	display:none;
+	position:absolute;
+	top:35px;
+	left:5%;
+	width:90%;
+	padding-top:5px;
+	padding-bottom:10px;
+	border-bottom-right-radius:5px;
+	border-bottom-left-radius:5px;
+	/* background:#74AFE3; */
+	background:#5dac59;
+    box-shadow: 1px 1px 1px #9de09b; 
+	
+	z-index:10;
+	text-align:center;
+	}
+.second_menu_list li{
+	position:relative;
+	list-style:none;
+	}
+.second_nav_link{
+	display:block;
+	width:100%;
+	height:31px;
+	line-height:31px;
+	/* border-bottom:1px solid #89BCE8; */
+	border-bottom:1px solid #9de09b;
+	text-decoration:none;
+	}
+.second_nav_link span{
+	color:#fff;
+	}
+.second_nav_link:hover{ /* background:#E45721; */ background:#449618;}
+.second_nav_link:hover:hover span{color:#fff;}
+
+/****third*******/
+.third_menu_box{
+	display:none;
+	position:absolute;
+	top:3px;
+	left:90%;
+	width:100%;
+	padding-top:5px;
+	padding-bottom:10px;
+	border-radius:5px;
+	/* background:#5F9DD1;
+	border:1px solid #89BCE8; */
+	background:#5dac59;
+	/* border:1px solid #9de09b;  */
+	z-index:100;
+	}
+.third_nav_link{
+	display:block;
+	width:100%;
+	text-align:center;
+	height:31px;
+	line-height:31px;
+	/* border-bottom:1px solid #89BCE8; */
+	border-bottom:1px solid #9de09b;
+	text-decoration:none;
+	}
+.third_nav_link span{
+	color:#fff;
+	}
+.third_nav_link:hover{/*  background:#E45721; */background:#449618;}
+.third_nav_link:hover span{ color:#fff;}
+
+/**fourth***/
+
+.fourth_menu_box{
+	display:none;
+	position:absolute;
+	top:3px;
+	left:90%;
+	width:100%;
+	padding-top:5px;
+	padding-bottom:10px;
+	border-radius:5px;
+	/* border:1px solid rgb(51,51,51);
+	background:rgb(74,74,74); */
+	background:#5dac59;
+    box-shadow: 1px 1px 1px #9de09b; 
+	z-index:1000;
+	}
+.fourth_nav_link{
+	display:block;
+	width:100%;
+	height:31px;
+	text-align:center;
+	line-height:31px;
+	/* border-bottom:1px solid rgb(81,81,81); */
+	border-bottom:1px solid #9de09b;
+	text-decoration:none;
+	}
+.fourth_nav_link span{
+	/* color:rgb(139,139,139); */
+	color:#fff;
+	}
+.fourth_nav_link:hover{/*  background:rgb(85,85,85); */background:#5dac59;}
+.fourth_nav_link:hover span{ /* color:rgb(236,236,236); */color:#fff;}
+
+
+
+

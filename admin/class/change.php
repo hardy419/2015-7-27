@@ -1,8 +1,15 @@
-<?
-// admin checking
-require_once("../../php-bin/admin_check.php");
+<?php
 
-require("class_selection.php");
+// admin checking
+require_once("../../admin.inc.php");
+
+// access control checking
+require_once("z_access_control.php");
+
+require_once("class_selection.php");
+
+
+
 
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -66,80 +73,81 @@ function MM_validateForm() { //v4.0
             <td>更改班別名稱為</td>
           </tr>
           <tr>
-            <td align="left" bgcolor="ECECEC">一年級</td>
-            <td bgcolor="FFFFFF"><?
+            <td align="left" bgcolor="ECECEC">一年</td>
+            <td bgcolor="FFFFFF"><?php
                   $get_rows=mysql_fetch_array($get_result,MYSQL_BOTH);
                   $show_year = 1;
 		  require("show_class_html.php"); // load the class name and html (year 1)
                   echo $print_class_name;
                   ?></td>
-            <td bgcolor="FFFFFF"><?=$print_class_html?>
+            <td bgcolor="FFFFFF"><?php echo $print_class_html?>
             <input type="hidden" name="year1" value="2"></td>
           </tr>
           <tr>
-            <td align="left" bgcolor="ECECEC">二年級</td>
-            <td bgcolor="FFFFFF"><?
+            <td align="left" bgcolor="ECECEC">二年</td>
+            <td bgcolor="FFFFFF"><?php
                   $show_year = 2;
 		  require("show_class_html.php"); // load the class name and html (year 1)
                   echo $print_class_name;
                   ?></td>
-            <td bgcolor="FFFFFF"><?=$print_class_html?>
+            <td bgcolor="FFFFFF"><?php echo $print_class_html?>
             <input name="year2" type="hidden" id="year2" value="3"></td>
           </tr>
           <tr>
-            <td align="left" bgcolor="ECECEC">三年級</td>
-            <td bgcolor="FFFFFF"><?
+            <td align="left" bgcolor="ECECEC">三年</td>
+            <td bgcolor="FFFFFF"><?php
                   $show_year = 3;
 		  require("show_class_html.php"); // load the class name and html (year 1)
                   echo $print_class_name;
                   ?></td>
-            <td bgcolor="FFFFFF"><?=$print_class_html?>
+            <td bgcolor="FFFFFF"><?php echo $print_class_html?>
             <input name="year3" type="hidden" id="year3" value="4"></td>
           </tr>
           <tr>
-            <td align="left" bgcolor="ECECEC">四年級</td>
-            <td bgcolor="FFFFFF"><?
+            <td align="left" bgcolor="ECECEC">四年</td>
+            <td bgcolor="FFFFFF"><?php
                   $show_year = 4;
 		  require("show_class_html.php"); // load the class name and html (year 1)
                   echo $print_class_name;
                   ?></td>
-            <td bgcolor="FFFFFF"><?=$print_class_html?>
+            <td bgcolor="FFFFFF"><?php echo $print_class_html?>
             <input name="year4" type="hidden" id="year4" value="5"></td>
           </tr>
           <tr>
-            <td align="left" bgcolor="ECECEC">五年級</td>
-            <td bgcolor="FFFFFF"><?
+            <td align="left" bgcolor="ECECEC">五年</td>
+            <td bgcolor="FFFFFF"><?php
                   $show_year = 5;
 		  require("show_class_html.php"); // load the class name and html (year 1)
                   echo $print_class_name;
                   ?></td>
-            <td bgcolor="FFFFFF"><?=$print_class_html?>
+            <td bgcolor="FFFFFF"><?php echo $print_class_html?>
             <input name="year5" type="hidden" id="year5" value="6"></td>
           </tr>
           <tr>
-            <td align="left" bgcolor="ECECEC">六年級</td>
-            <td bgcolor="FFFFFF"><?
+            <td align="left" bgcolor="ECECEC">六年</td>
+            <td bgcolor="FFFFFF"><?php
                   $show_year = 6;
 		  require("show_class_html.php"); // load the class name and html (year 1)
                   echo $print_class_name;
                   ?></td>
-            <td bgcolor="FFFFFF"><?=$print_class_html?>
+            <td bgcolor="FFFFFF"><?php echo $print_class_html?>
               <input name="year6" type="hidden" id="year6" value="7"></td>
           </tr>
           <tr>
-            <td align="left" bgcolor="ECECEC">七年級</td>
-            <td bgcolor="FFFFFF"><?
+            <td align="left" bgcolor="ECECEC">Backup</td>
+            <td bgcolor="FFFFFF"><?php
                   $show_year = 7;
 		  require("show_class_html.php"); // load the class name and html (year 1)
                   echo $print_class_name;
                   ?></td>
-            <td bgcolor="FFFFFF"><input name="year7" type="hidden" id="year7" value="7">
-            -</td>
+            <td bgcolor="FFFFFF">
+              <input name="year7" type="hidden" id="year7" value="8">
+              -</td>
           </tr>
           <tr bgcolor="ECECEC">
-            <td colspan="3" align="center" class="style5"><input type="submit" name="submit1" value="升級">
-            <input type="submit" name="submit" value="重設">
-					  <button type='button' onclick='javascript:history.go(-1);'>返回</button></td>
+            <td colspan="3" align="center" class="style5"><input type="submit" name="submit1" value="升級"> &nbsp; 
+            <input type="submit" name="submit" value="重設"> &nbsp; 
+            <input type="button" value="返回" onClick="history.go(-1)"></td>
           </tr>
 	    </form>
         </table></td>

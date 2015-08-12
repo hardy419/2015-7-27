@@ -1,10 +1,21 @@
-<?
-session_start();
+<?php
+
+header("Content-Type:text/html;charset=utf-8"); 
+
+require_once("../admin.inc.php");
 
 
-$_SESSION["admin_level"];
+
+unset($_SESSION["admin_login"]);
+
+
+
 session_destroy();
 
-header("Location:index.php");
+
+
+header("Location: index.php");
+
+
 
 ?>

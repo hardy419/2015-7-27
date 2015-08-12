@@ -1,0 +1,22 @@
+.MsoNormalTable{
+	border-left: 1px solid #E3E8CE;
+	border-bottom: 1px solid #E3E8CE;
+	font-size:15px;
+}
+
+.MsoNormalTable td{
+	padding:10px;
+}
+
+.td_bg_green{
+	background-color:#EDF2D8;
+}
+
+.td_bg_pink{
+	background-color:#FEFAF5;
+}
+
+.MsoNormalTable td,.MsoNormalTable th{
+	border-right:1px solid #E3E8CE;
+	border-top: 1px solid #E3E8CE;
+}

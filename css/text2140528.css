@@ -1,0 +1,67 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+	margin:0;
+	padding:0;
+	}
+.content{
+	width:1200px;
+	font-family:微软雅黑;
+	}
+.left_side{
+	float:left;
+	width:225px;
+	padding-left:20px;
+	font-size:18px; 
+	}
+.left_side a{ text-decoration:none;}
+.left_side li{list-style:none; margin-top:10px;}
+.first_nav_list>li{
+	line-height:25px;
+	}
+.first_nav_list>li>a{
+	display:block;
+	padding-left:14px;
+	height:30px;
+	line-height:30px;
+	color:rgb(89,89,89);
+	background:url(../images/lnb02a.png) 0 center no-repeat;
+	}
+.first_nav_list>li>a:hover,
+.first_nav_list>li>a.link_on{ background:url(../images/lnb01a.jpg) 0 center no-repeat;}
+.second_nav_list{
+	display:none;
+	padding-left:15px;
+	font-size:15px;
+	}
+.second_nav_list>li>a{
+	display:block;
+	padding-left:14px;
+	height:24px;
+	line-height:24px;
+	color:rgb(91,91,91);
+	background:url(../images/lnb04a.png) 0 center no-repeat;
+	}
+/*.second_nav_list>li>a:hover,
+.second_nav_list>li>a.link_on1{ background:url(../images/lnb03a.png) 0 center no-repeat;}*/
+.second_nav_list>li>a.link_on1 span{ color:#E35620;}
+.third_nav_list{
+	display:none;
+	padding-left:15px;
+	border-top:1px solid rgb(224,224,224);
+	}
+.third_nav_list>li>a{
+	display:block;
+	padding-left:14px;
+	height:24px;
+	line-height:24px;
+	color:rgb(91,91,91);
+	}
+.clearfloat:after{
+	display:block;
+	clear:both;
+	content:"";
+	visibility:hidden;
+	height:0;
+	}
+.clearfloat{zoom:1;}

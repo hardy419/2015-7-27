@@ -1,7 +1,17 @@
-<?
+<?php
+
 // admin checking
-require_once("../../php-bin/admin_check.php");
-require("class_selection.php");
+require_once("../../admin.inc.php");
+
+// access control checking
+require_once("z_access_control.php");
+
+// Connect Database
+require_once("../../php-bin/function.php");
+
+require_once("class_selection.php");
+
+
 ?>
 <html>
 <head>
@@ -24,7 +34,7 @@ require("class_selection.php");
     <td><table width="100%"  border="0" cellspacing="1" cellpadding="10">
       <tr>
         <td><font class=style8 color=red>
-          <? if ($_GET["msg"]!="") echo "<br>".$_GET["msg"]; ?>
+          <?php   if ($_GET["msg"]!="") echo "<br>".$_GET["msg"]; ?>
         </font></td>
       </tr>
     </table>
@@ -40,7 +50,7 @@ require("class_selection.php");
       <tr align="left" valign="top" bgcolor="#FFFFFF">
         <td width="15%"><span class="style2"><span class="style4">搜尋結果</span>：</span></td>
         <td width="85%" align="right">總共有
-          <?=$total_record?>
+          <?php echo $total_record?>
 個資料</td>
       </tr>
     </table>
@@ -50,34 +60,34 @@ require("class_selection.php");
         <td width="38%" nowrap class="admin_maintain_header"><div align="center">年級</div></td>
         <td width="1%" nowrap class="admin_maintain_header"><div align="center">刪除</div></td>
       </tr>
-      <?
+      <?php
       
 // Display class's information
 while ($get_rows=mysql_fetch_array($get_result,MYSQL_BOTH)){
 	if ($get_rows[year] == 1)	
-		$year_word = "一年級";
+		$year_word = "一年";
 	else if ($get_rows[year] == 2)	
-		$year_word = "二年級";
+		$year_word = "二年";
 	else if ($get_rows[year] == 3)	
-		$year_word = "三年級";
+		$year_word = "三年";
 	else if ($get_rows[year] == 4)	
-		$year_word = "四年級";
+		$year_word = "四年";
 	else if ($get_rows[year] == 5)	
-		$year_word = "五年級";
+		$year_word = "五年";
 	else if ($get_rows[year] == 6)	
-		$year_word = "六年級";
+		$year_word = "六年";
 	else if ($get_rows[year] == 7)	
-		$year_word = "七年級";
+		$year_word = "Backup";
 	else{
 		$year_word = $get_rows[year] . "畢業";	
 	}
 ?>
       <tr class="admin_maintain_contents" align="center">
-        <td class="admin_maintain_contents"><?=$get_rows[class_name]?></td>
-        <td class="admin_maintain_contents"><?=$year_word?></td>
-        <td class="admin_maintain_contents"><a href="class_delete.php?id=<?=$get_rows["class_id"]?>" onClick="return confirm('你確定要刪除這筆資料嗎?')"><img src="../icons/del.gif" width="16" height="16" border="0" alt="刪除"></a></td>
+        <td class="admin_maintain_contents"><?php echo $get_rows[class_name]?></td>
+        <td class="admin_maintain_contents"><?php echo $year_word?></td>
+        <td class="admin_maintain_contents"><a href="class_delete.php?id=<?php echo $get_rows["class_id"]?>" onClick="return confirm('你確定要刪除這筆資料嗎?')"><img src="../icons/del.gif" width="16" height="16" border="0" alt="刪除"></a></td>
       </tr>
-      <?
+      <?php
 }
 ?>
     </table></td>

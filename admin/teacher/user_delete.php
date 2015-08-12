@@ -1,53 +1,53 @@
-<?
+<?php
+header("Content-Type:text/html;charset=utf-8"); 
 // admin checking
-require_once("../../php-bin/admin_check.php");
+require_once("../../admin.inc.php");
 
-    // Connect Database
+// Connect Database
+require_once("../../php-bin/function.php");
 
-    require("../../php-bin/function.php");
-
-
-
-    if (isset($_GET["id"])){
+// access control checking
+require_once("z_access_control.php");
 
 
 
-      // Delete data
-
-      $del_sql = "DELETE
-
-                  FROM `tbl_teacher`
-
-                  WHERE teacher_id='".$_GET["id"]."';";
-
-	  $run_status = mysql_query($del_sql);
+$id = $_GET["id"]|0;
 
 
 
-	  if (!$run_status) {
 
-        $msg = str_replace(" ", "+", "Query failed: " . mysql_error($link_id));
 
-      }else{
-
-	    unlink("../../teacher_staff/photo/$_GET[fn]");
-        $msg = "老師刪除完成";
-
-      }
+if( $id != 0 )
+{
 
 
 
-      mysql_close();
+	// Delete data
+	$del_sql = "DELETE
+	FROM `tbl_teacher`
+	WHERE teacher_id='$id';";
 
-    
+	$run_status = mysql_query($del_sql);
 
-      header("Location: user.php?msg=$msg");
 
-      
 
-    }
+	if (!$run_status)
+		$msg = str_replace(" ", "+", "Query failed: " . mysql_error($link_id));
+	else
+	{
+		unlink("../../gallery_staff/$_GET[fn]");
+		$msg = "Record has been deleted successfully.";
+	}
+
+
+
+	mysql_close();
+	header("Location: user.php?msg=$msg");
+
+
+
+}
 
 
 
 ?>
-

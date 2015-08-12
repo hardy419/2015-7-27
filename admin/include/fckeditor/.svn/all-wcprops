@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/cuhk/!svn/ver/321/trunk/admin/include/fckeditor
+END
+fckeditor.php
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/cuhk/!svn/ver/321/trunk/admin/include/fckeditor/fckeditor.php
+END
+fckpackager.xml
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/cuhk/!svn/ver/321/trunk/admin/include/fckeditor/fckpackager.xml
+END
+license.txt
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/cuhk/!svn/ver/321/trunk/admin/include/fckeditor/license.txt
+END
+fcktemplates.xml
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/cuhk/!svn/ver/321/trunk/admin/include/fckeditor/fcktemplates.xml
+END
+fckconfig.js
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/cuhk/!svn/ver/321/trunk/admin/include/fckeditor/fckconfig.js
+END
+fckeditor.cfc
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/cuhk/!svn/ver/321/trunk/admin/include/fckeditor/fckeditor.cfc
+END
+fckeditor.js
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/cuhk/!svn/ver/321/trunk/admin/include/fckeditor/fckeditor.js
+END
+fckstyles.xml
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/cuhk/!svn/ver/321/trunk/admin/include/fckeditor/fckstyles.xml
+END
+fckeditor_php4.php
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/cuhk/!svn/ver/321/trunk/admin/include/fckeditor/fckeditor_php4.php
+END
+fckeditor_php5.php
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/cuhk/!svn/ver/321/trunk/admin/include/fckeditor/fckeditor_php5.php
+END

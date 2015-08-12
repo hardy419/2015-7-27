@@ -1,128 +1,128 @@
-body {
-	margin-left: 0px;
-	margin-top: 0px;
-	margin-right: 0px;
-	margin-bottom: 0px;
-	scrollbar-face-color:#DEEDFF;
-	scrollbar-shadow-color:#82ACDA;
-	scrollbar-highlight-color:#DEEDFF;
-	scrollbar-3dlight-color:#82ACDA;
-	scrollbar-darkshadow-color:#DEEDFF;
-	scrollbar-track-color:#FFFFFF;
-	scrollbar-arrow-color:#82ACDA;
-}
-a:link {
-	color: #003399;
-	text-decoration: none;
-}
-a:visited {
-	text-decoration: none;
-	color: #003399;
-}
-a:hover {
-	text-decoration: underline;
-	color: #003399;
-}
-a:active {
-	text-decoration: none;
-	color: #003399;
-}
-.table {
-	background-repeat: no-repeat;
-}
-.wq_content {
-	font-family: "新細明體";
-	font-size: 15px;
-	line-height: 24px;
-	color: #006699;
-}
-.table_fix {
-	background-attachment: fixed;
-}
-.arial {
-	font-family: Arial, Helvetica, sans-serif;
-}
-.wq_subtitle {
-
-	font-family: "新細明體";
-	font-size: 15px;
-	line-height: 24px;
-	color: #006699;
-}
-.whitesroll {
-	scrollbar-face-color:#FFFFFF;
-	scrollbar-shadow-color:#FFFFFF;
-	scrollbar-highlight-color:#FFFFFF;
-	scrollbar-3dlight-color:#FFFFFF;
-	scrollbar-darkshadow-color:#FFFFFF;
-	scrollbar-track-color:#FFFFFF;
-	scrollbar-arrow-color:#82ACDA;
-}
-._wq_content_lh {
-
-	font-family: "????";
-	font-size: 15px;
-	line-height: 16px;
-	color: #006699;
-}
-.main_content {
-
-	font-family: "新細明體";
-	font-size: 12px;
-	line-height: 18px;
-	color: #006699;
-}
-.grey {
-
-
-	font-family: "新細明體";
-	font-size: 12px;
-	line-height: 18px;
-	color: #5c5c5c;
-}
-.title_bold {
-	font-family: "新細明體";
-	font-size: 16px;
-	line-height: 24px;
-	color: #006699;
-	font-weight: bold;
-}
-.index_address {
-
-
-	font-family: "新細明體";
-	font-size: 13px;
-	line-height: 18px;
-	color: #000000;
-}
-.index_select {
-
-
-
-	font-family: "新細明體";
-	font-size: 15px;
-	line-height: 18px;
-	color: #000000;
-}
-.ranktype {
-	color: #003399;
-	text-decoration: none;
-	font-family: "新細明體";
-	font-size: 12px;
-}
-.table_course {
-	visibility: hidden;
-}
-.menu {
-	font-family: Arial, "新細明體";
-	font-size: 12px;
-	color: #0000ff;
-}
-.mainpagetb_content {
-
-
-	font-family: "新細明體";
-	font-size: 12px;
-	line-height: 18px;
-	color: #003399;
-}
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	scrollbar-face-color:#DEEDFF;
+	scrollbar-shadow-color:#82ACDA;
+	scrollbar-highlight-color:#DEEDFF;
+	scrollbar-3dlight-color:#82ACDA;
+	scrollbar-darkshadow-color:#DEEDFF;
+	scrollbar-track-color:#FFFFFF;
+	scrollbar-arrow-color:#82ACDA;
+}
+a:link {
+	color: #003399;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #003399;
+}
+a:hover {
+	text-decoration: underline;
+	color: #003399;
+}
+a:active {
+	text-decoration: none;
+	color: #003399;
+}
+.table {
+	background-repeat: no-repeat;
+}
+.wq_content {
+	font-family: "新細明體";
+	font-size: 15px;
+	line-height: 24px;
+	color: #006699;
+}
+.table_fix {
+	background-attachment: fixed;
+}
+.arial {
+	font-family: Arial, Helvetica, sans-serif;
+}
+.wq_subtitle {
+
+	font-family: "新細明體";
+	font-size: 15px;
+	line-height: 24px;
+	color: #006699;
+}
+.whitesroll {
+	scrollbar-face-color:#FFFFFF;
+	scrollbar-shadow-color:#FFFFFF;
+	scrollbar-highlight-color:#FFFFFF;
+	scrollbar-3dlight-color:#FFFFFF;
+	scrollbar-darkshadow-color:#FFFFFF;
+	scrollbar-track-color:#FFFFFF;
+	scrollbar-arrow-color:#82ACDA;
+}
+._wq_content_lh {
+
+	font-family: "????";
+	font-size: 15px;
+	line-height: 16px;
+	color: #006699;
+}
+.main_content {
+
+	font-family: "新細明體";
+	font-size: 12px;
+	line-height: 18px;
+	color: #006699;
+}
+.grey {
+
+
+	font-family: "新細明體";
+	font-size: 12px;
+	line-height: 18px;
+	color: #5c5c5c;
+}
+.title_bold {
+	font-family: "新細明體";
+	font-size: 16px;
+	line-height: 24px;
+	color: #006699;
+	font-weight: bold;
+}
+.index_address {
+
+
+	font-family: "新細明體";
+	font-size: 13px;
+	line-height: 18px;
+	color: #000000;
+}
+.index_select {
+
+
+
+	font-family: "新細明體";
+	font-size: 15px;
+	line-height: 18px;
+	color: #000000;
+}
+.ranktype {
+	color: #003399;
+	text-decoration: none;
+	font-family: "新細明體";
+	font-size: 12px;
+}
+.table_course {
+	visibility: hidden;
+}
+.menu {
+	font-family: Arial, "新細明體";
+	font-size: 12px;
+	color: #0000ff;
+}
+.mainpagetb_content {
+
+
+	font-family: "新細明體";
+	font-size: 12px;
+	line-height: 18px;
+	color: #003399;
+}

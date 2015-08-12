@@ -1,19 +1,47 @@
-<?
-    // Connect Database
+<?php
 
-    require("../../php-bin/function.php");
 
-    // Get User's Information
 
-    $get_sql = "SELECT * FROM `tbl_class` ORDER BY `year` ASC , class_name ASC LIMIT 0 , 50 ";
+// admin checking
 
-    $get_result = mysql_query($get_sql, $link_id);
-	
-	  $total_record = mysql_num_rows($get_result);
+require_once("../../admin.inc.php");
 
-    mysql_close();
+
+
+// access control checking
+
+require_once("z_access_control.php");
+
+
+
+// Connect Database
+
+require_once("../../php-bin/function.php");
+
+
+
+
+
+
+
+// Get User's Information
+
+
+
+$get_sql = "SELECT * FROM `tbl_class` ORDER BY `year` ASC , class_name ASC LIMIT 0 , 30 ";
+
+$get_result = mysql_query($get_sql, $link_id);
+
+$total_record = mysql_num_rows($get_result);
+
+
+
+mysql_close();
+
+
+
+
 
 
 
 ?>
-
