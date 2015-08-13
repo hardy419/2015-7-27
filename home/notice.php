@@ -131,7 +131,7 @@ for ($i=0; $row=mysql_fetch_array($rows,MYSQL_ASSOC); $i++){
         <li><a href="policy.html">課程政策</a></li>
         <li class="ml14"><a href="timetable.html">上課時間</a></li>
         <li class="ml14"><a href="loving.html">愛心學園</a></li>
-        <li class="ml14"><a href="activity.html">活動資訊</a></li>
+        <li class="ml14"><a href="activity.php">活動資訊</a></li>
         <li class="ml14 bdn"><a href="contact.html">聯絡我們</a></li>
         <li class="bdn"><a href="#">登入內聯網</a></li>
       </ul>

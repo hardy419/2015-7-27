@@ -482,4 +482,3 @@ class model extends db_mysql
 
 
 ?>
-

@@ -4,7 +4,7 @@ require_once("lib_config.php");
 ob_start();
 if( ! session_id() )
 	session_start();
-ini_set('date.timezone','Asia/Shanghai');
+//ini_set('date.timezone','Asia/Shanghai');
 function connect_mysql() {
 	global $link_id, $config;
 	$link_id = @mysql_connect($config["db_server"]['host'], $config["db_server"]['user'], $config["db_server"]['pass']);

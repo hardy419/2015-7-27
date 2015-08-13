@@ -90,43 +90,43 @@ a, a:hover {
 <BODY style=" background:#ECECEC;">
 <div style="margin:10px; border:#ccc;">
   <div class="title">請選擇下列項目 </div>
-  <div class="vtitle"><em class="v v02"></em>學校簡介</div>
+  <div class="vtitle"><em class="v v02"></em>學校資料</div>
   <div class="vcon" >
     <ul class="vconlist clearfix">
+       <li><a href="notice/downlist.php?type=1" target="admin_main">學校通告</a></li>
+      <li><a href="lastest/activity.php" target="admin_main">最新消息</a></li>
       <li><a href="aboutus/n_search.php" target="admin_main">校長的話</a></li>
-      <li><a href="aboutus/down.php" target="admin_main">周年報告</a></li>
-     <!-- <li><a href="calender/calendar.php?type=T" target="admin_main">校曆表</a></li>-->
+      <!--li><a href="aboutus/down.php" target="admin_main">周年報告</a></li>
+     < <li><a href="calender/calendar.php?type=T" target="admin_main">校曆表</a></li>-->
     </ul>
   </div>
-  <div class="vtitle"><em class="v v02"></em>學生成長</div>
+  <!--div class="vtitle"><em class="v v02"></em>學生成長</div>
   <div class="vcon" >
     <ul class="vconlist clearfix">
-      <li><a href="lastest/activity.php" target="admin_main">最近活動</a></li>
       <li><a href="contest/contestlist.php?id=1" target="admin_main">校外比賽</a></li>
       <li><a href="contest/contestlist.php?id=2" target="admin_main">校內比賽</a></li>
       <li><a href="art/activity.php" target="admin_main">學生作品</a></li>
       <li><a href="contest/contestlist.php?id=3" target="admin_main">獎學金</a></li>
     </ul>
-  </div>
-  <div class="vtitle"><em class="v v02"></em>學校資訊</div>
+  </div-->
+  <div class="vtitle"><em class="v v02"></em>活動資訊</div>
   <div class="vcon">
     <ul class="vconlist clearfix">
-       <li><a href="notice/downlist.php?type=1" target="admin_main">通告下載</a></li>
       <li><a href="activity/activity.php?type=HD" target="admin_main">活動照片</a></li>
-      <li><a href="movie/activity.php" target="admin_main">活動影片</a></li>
+      <!--li><a href="movie/activity.php" target="admin_main">活動影片</a></li>
       <li><a href="notice/downlist.php?type=2" target="admin_main">校園刊物</a></li>
       <li><a href="notice/downlist.php?type=5" target="admin_main">傳媒報道</a></li>
-      <li><a href="notice/downlist.php?type=6" target="admin_main">境外學習活動</a></li>
+      <li><a href="notice/downlist.php?type=6" target="admin_main">境外學習活動</a></li-->
     </ul>
   </div>
-   <div class="vtitle"><em class="v v02"></em>資料下載區</div>
+   <!--div class="vtitle"><em class="v v02"></em>資料下載區</div>
   <div class="vcon">
     <ul class="vconlist clearfix">
       <li><a href="notice/downlist.php?type=4" target="admin_main">學校報告及發展計劃</a></li>
       <li><a href="notice/downlist.php?type=3" target="admin_main">招標公告</a></li>
     </ul>
   </div>
- <!-- <div class="vtitle"><em class="v v02"></em>其他</div>
+ < <div class="vtitle"><em class="v v02"></em>其他</div>
   <div class="vcon">
     <ul class="vconlist clearfix">
      <li><a href="link/link.php?link_sort=2" target="admin_main">常用網站</a></li>

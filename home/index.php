@@ -84,7 +84,7 @@ require("../php-bin/function.php");
         $rows = mysql_query('SELECT * FROM tbl_chancellor where file_type_id=9 ORDER BY `file_date` DESC LIMIT 5');
       ?>
       <ul><?PHP for ($i=0; $row=mysql_fetch_array($rows,MYSQL_ASSOC); $i++){ ?>
-        <li><a href="<?PHP if(null != $row['file_file_name'] && !empty($row['file_file_name'])) { echo '../userfiles/pdf/'.$row['file_file_name']; } else { echo 'javascript:void(0);'; } ?>"><?PHP echo $row['file_title']; ?></a><span><?PHP echo $row['file_date']; ?></span></li>
+        <li><a href="<?PHP if(null != $row['file_file_name'] && !empty($row['file_file_name'])) { echo '../file_download/'.$row['file_file_name']; } else { echo 'javascript:void(0);'; } ?>"><?PHP echo $row['file_title']; ?></a><span><?PHP echo $row['file_date']; ?></span></li>
       <?PHP } ?></ul>
     </div>
     <!--活動相片-->
@@ -131,7 +131,7 @@ require("../php-bin/function.php");
         <li><a href="policy.html">課程政策</a></li>
         <li class="ml14"><a href="timetable.html">上課時間</a></li>
         <li class="ml14"><a href="loving.html">愛心學園</a></li>
-        <li class="ml14"><a href="activity.html">活動資訊</a></li>
+        <li class="ml14"><a href="activity.php">活動資訊</a></li>
         <li class="ml14 bdn"><a href="contact.html">聯絡我們</a></li>
         <li class="bdn"><a href="#">登入內聯網</a></li>
       </ul>
