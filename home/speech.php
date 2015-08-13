@@ -25,7 +25,7 @@ require("../php-bin/function.php");
 <!--==================頁頭==================-->
 <div id="policywrap" class="pr commoncss">
 <ul class="menu pa">
-  <li><a id='home' href="index.html" target="_self" >主頁</a></li>
+  <li><a id='home' href="index.php" target="_self" >主頁</a></li>
   <li><a href="info.html" class="current" target="_self">學校資料</a>
   	<ul>
       <li><a href="info2.html" target="_self">學校設施</a></li>
@@ -82,21 +82,21 @@ else {
     $page = 1;
 }
 $num = 6;
-$count = mysql_query('SELECT COUNT(*) AS count FROM tbl_notice WHERE web_type=2 ORDER BY `date` DESC', $link_id);
+$count = mysql_query('SELECT COUNT(*) AS count FROM tbl_chancellor where file_type_id=9 ORDER BY `file_date` DESC', $link_id);
 $count = mysql_fetch_array($count, MYSQL_ASSOC);
 $count = $count['count'];
-$rows = mysql_query('SELECT * FROM tbl_notice WHERE web_type=2 ORDER BY `date` DESC LIMIT '.($num*($page-1)).','.$num,$link_id);
+$rows = mysql_query('SELECT * FROM tbl_chancellor where file_type_id=9 ORDER BY `file_date` DESC LIMIT '.($num*($page-1)).','.$num,$link_id);
 for ($i=0; $row=mysql_fetch_array($rows,MYSQL_ASSOC); $i++){
 ?>
         <tr>
-          <td width="160"><?PHP echo $row['title_cn']; ?></td>
+          <td width="160"><?PHP echo $row['file_title']; ?></td>
           <td>
             <div class="tb_con">
-            <?PHP echo $row['description']; ?>
+            <?PHP //echo html_entity_decode ($row['file_content']); ?>
             </div>
           </td>
-          <td width="160"><?PHP echo $row['date']; ?></td>
-          <td width="160"><a href=<?PHP echo '"../userUpload/attachment/'.$row['docoment_name'].'"'; ?>>資料下載</a></td>
+          <td width="160"><?PHP echo $row['file_date']; ?></td>
+          <td width="160"><?PHP if(null != $row['file_file_name'] && !empty($row['file_file_name'])) { ?><a href=<?PHP echo '"../userfiles/pdf/'.$row['file_file_name'].'"'; ?>>資料下載</a><?PHP } ?></td>
         </tr>
 
 <?PHP } ?>

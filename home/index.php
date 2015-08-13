@@ -1,3 +1,6 @@
+<?PHP
+require("../php-bin/function.php");
+?>
 <!doctype html>
 <html>
 <head>
@@ -13,7 +16,7 @@
 <!--==================頁頭==================-->
 <div id="indexTop" class="pr">
 <ul class="menu pa">
-  <li><a id='home' href="index.html" target="_self" class="current" >主頁</a></li>
+  <li><a id='home' href="index.php" target="_self" class="current" >主頁</a></li>
   <li><a href="info.html" target="_self">學校資料</a>
   	<ul>
       <li><a href="info2.html" target="_self">學校設施</a></li>
@@ -62,12 +65,12 @@
     <!--學校通告-->
     <div class="notice">
       <img src="images/notice_title.jpg" usemap="#notice-map" />
-      <ul>
-        <li><a href="#">小一學位正式收生</a></li>
-        <li><a href="#">全校需配戴口罩</a></li>
-        <li><a href="#">9月3日正式上學</a></li>
-        <li><a href="#">小一學位正式收生</a></li>
-      </ul>
+      <?PHP
+        $rows = mysql_query('SELECT * FROM tbl_notice WHERE a_type=1 ORDER BY `a_date` DESC LIMIT 5');
+      ?>
+      <ul><?PHP for ($i=0; $row=mysql_fetch_array($rows,MYSQL_ASSOC); $i++){ ?>
+        <li><a href="<?PHP if(null != $row['down_file'] && !empty($row['down_file'])) { echo '../userfiles/pdf/'.$row['down_file']; } else { echo 'javascript:void(0);'; } ?>"><?PHP echo $row['a_title']; ?></a></li>
+      <?PHP } ?></ul>
     </div>
     <div class="col_01_img01"><a href="#"><img src="images/left_bottom_01.jpg" /></a></div>
     <div class="col_01_img02"><a href="timetable.html"><img src="images/left_bottom_02.jpg" /></a></div>
@@ -77,24 +80,25 @@
     <!--校長的話-->
     <div class="leader">
       <img src="images/leader_title.jpg" usemap="#leader-map" />
-      <ul>
-        <li><a href="#">學習遊戲 均衡發展</a><span>2015-05-02</span></li>
-        <li><a href="#">愛主愛人 鼓勵贊賞</a><span>2015-04-01</span></li>
-        <li><a href="#">愛與接納 與主同行</a><span>2015-03-02</span></li>
-        <li><a href="#">新春快樂 共證主恩</a><span>2015-02-05</span></li>
-        <li><a href="#">自強不息 標竿跑步</a><span>2015-01-02</span></li>
-      </ul>
+      <?PHP
+        $rows = mysql_query('SELECT * FROM tbl_chancellor where file_type_id=9 ORDER BY `file_date` DESC LIMIT 5');
+      ?>
+      <ul><?PHP for ($i=0; $row=mysql_fetch_array($rows,MYSQL_ASSOC); $i++){ ?>
+        <li><a href="<?PHP if(null != $row['file_file_name'] && !empty($row['file_file_name'])) { echo '../userfiles/pdf/'.$row['file_file_name']; } else { echo 'javascript:void(0);'; } ?>"><?PHP echo $row['file_title']; ?></a><span><?PHP echo $row['file_date']; ?></span></li>
+      <?PHP } ?></ul>
     </div>
     <!--活動相片-->
     <div class="active">
       <h1></h1>
-      <p>小一新生簡介會2015</p>
-      <ul>
-        <li><a href="#"><img src="images/active_pic01.jpg" /></a></li>
-        <li><a href="#"><img src="images/active_pic02.jpg" /></a></li>
-        <li><a href="#"><img src="images/active_pic03.jpg" /></a></li>
-        <li><a href="#"><img src="images/active_pic04.jpg" /></a></li>
-      </ul>
+      <?PHP
+        $rows = mysql_query('SELECT * FROM tbl_activity ORDER BY `date` DESC LIMIT 1');
+        $row=mysql_fetch_array($rows,MYSQL_ASSOC);
+        $photos = mysql_query("SELECT * FROM tbl_activity_gallery WHERE act_id={$row['id']} ORDER BY `g_order` ASC");
+      ?>
+      <p><?PHP echo $row['name']; ?></p>
+      <ul><?PHP for ($i=0; $photo=mysql_fetch_array($photos,MYSQL_ASSOC); $i++){ ?>
+        <li><a href="#"><img style="width:60px;height:60px" src="<?PHP echo "../gallery_activity/{$photo['file_name']}"; ?>" /></a></li>
+      <?PHP if(3==$i) break; } ?></ul>
     </div>
   </div>
   <!--第三列-->
@@ -102,11 +106,13 @@
     <!--最新消息-->
     <div class="news">
       <img src="images/news_title.jpg" usemap="#news-map" />
-      <ul>
-        <li><a href='doc/p1_reserve_list.pdf' target="_blank">小一後備學位申請表</a><span>2015-06-05</span></li>
-        <li><a href='doc/p1_register.pdf' target="_blank">新生註冊表</a><span>2015-06-05</span></li>
+      <?PHP
+        $rows = mysql_query('SELECT * FROM tbl_lastest ORDER BY `date` DESC LIMIT 3');
+      ?>
+      <ul><?PHP for ($i=0; $row=mysql_fetch_array($rows,MYSQL_ASSOC); $i++){ ?>
+        <li><a href="<?PHP if(null != $row['file_file_name'] && !empty($row['file_file_name'])) { echo '../userfiles/pdf/'.$row['file_file_name']; } else { echo 'javascript:void(0);'; } ?>"><?PHP echo $row['name']; ?></a><span><?PHP echo $row['date']; ?></span></li>
        
-      </ul>
+      <?PHP } ?></ul>
     </div>
     <div class="col_03_pic01 fl"><a href="#"><img src="images/right_bottom_01.jpg" /></a></div>
     <div class="col_03_pic02 fl"><a href="#"><img src="images/right_bottom_02.jpg" /></a></div>
