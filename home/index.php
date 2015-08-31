@@ -10,6 +10,9 @@ require("../php-bin/function.php");
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/public.css">
 <link rel="stylesheet" type="text/css" href="css/reset.css">
+<link media="screen" type="text/css" rel="stylesheet" href="../css/lightbox.css"></link>
+<script src="../js/jquery-1.11.3.min.js"></script>
+<script src="../js/lightbox.min.js"></script>
 </head>
 
 <body>
@@ -96,9 +99,11 @@ require("../php-bin/function.php");
         $photos = mysql_query("SELECT * FROM tbl_activity_gallery WHERE act_id={$row['id']} ORDER BY `g_order` ASC");
       ?>
       <p><?PHP echo $row['name']; ?></p>
-      <ul><?PHP for ($i=0; $photo=mysql_fetch_array($photos,MYSQL_ASSOC); $i++){ ?>
-        <li><a href="#"><img style="width:60px;height:60px" src="<?PHP echo "../gallery_activity/{$photo['file_name']}"; ?>" /></a></li>
-      <?PHP if(3==$i) break; } ?></ul>
+      <ul><?PHP for ($i=0; $photo=mysql_fetch_array($photos,MYSQL_ASSOC); $i++){ if($i<=3) { ?>
+        <li><a href="<?PHP echo "../gallery_activity/{$photo['file_name']}"; ?>" data-lightbox="activity-photos"><img style="width:60px;height:60px" src="<?PHP echo "../gallery_activity/{$photo['file_name']}"; ?>" /></a></li>
+        <?PHP } else { ?>
+        <li><a href="<?PHP echo "../gallery_activity/{$photo['file_name']}"; ?>" data-lightbox="activity-photos"></a></li>
+      <?PHP } } ?></ul>
     </div>
   </div>
   <!--第三列-->

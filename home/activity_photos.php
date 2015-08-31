@@ -12,6 +12,9 @@ require("../php-bin/function.php");
 <link rel="stylesheet" type="text/css" href="css/layout.css">
 <link rel="stylesheet" type="text/css" href="css/public.css">
 <link rel="stylesheet" type="text/css" href="css/reset.css">
+<link media="screen" type="text/css" rel="stylesheet" href="../css/lightbox.css"></link>
+<script src="../js/jquery-1.11.3.min.js"></script>
+<script src="../js/lightbox.min.js"></script>
 <style>
 .py_titleTable table td:first-child {width: 100px;}
 .py_titleTable table td:first-child+td {width: 260px;}
@@ -19,6 +22,19 @@ require("../php-bin/function.php");
 .py_titleTable table td:first-child+td+td+td {width: 80px;}
 .py_tTable {height: auto}
 .pagination {padding: 10px; float: right}
+
+.py_tTable table td {border:0; padding-left:40px; padding-top:20px;}
+.py_tTable table tr:first-child+tr+tr td {padding-bottom:20px;}
+.img-frame {
+  width: 240px;        /* 如果加了border要減掉border的寬度 */
+  height: 160px;       /* 同上 */
+  border:1px solid #c0c0c0;
+}
+.img-frame div {
+  width: 220px;        /* 200 = 220 - 10*2 */
+  height: 140px;
+  padding: 10px;
+}
 </style>
 </head>
 <body>
@@ -61,20 +77,6 @@ require("../php-bin/function.php");
   
   </div>
 
-  <div class="policy pa">
-      
-      <div class="py_titleTable pa">
-      <table width="100%" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td>標題</td>
-          <td>描述</td>
-          <td>日期</td>
-          <td>下載</td>
-        </tr>
-      </table>
-    </div>
-    <div class="py_tTable pa">
-      <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <?PHP
 if (isset ($_GET['p'])) {
     $page = $_GET['p'];
@@ -82,37 +84,41 @@ if (isset ($_GET['p'])) {
 else {
     $page = 1;
 }
-$num = 6;
-$count = mysql_query('SELECT COUNT(*) AS count FROM tbl_activity ORDER BY `date` DESC', $link_id);
+$num = 9;
+$pid = mysql_escape_string ($_GET['pid']);
+$count = mysql_query("SELECT COUNT(*) AS count FROM tbl_activity_gallery WHERE act_id={$pid}", $link_id);
 $count = mysql_fetch_array($count, MYSQL_ASSOC);
 $count = $count['count'];
-$rows = mysql_query('SELECT * FROM tbl_activity ORDER BY `date` DESC LIMIT '.($num*($page-1)).','.$num,$link_id);
-for ($i=0; $row=mysql_fetch_array($rows,MYSQL_ASSOC); $i++){
+$photos = mysql_query("SELECT * FROM tbl_activity_gallery WHERE act_id={$pid} ORDER BY `g_order` ASC LIMIT ".($num*($page-1)).','.$num);
 ?>
-        <tr>
-          <td width="160"><a href="activity_photos.php?pid=<?PHP echo $row['id']; ?>"><?PHP echo $row['name']; ?></a></td>
-          <td>
-            <div class="tb_con">
-            <?PHP //echo html_entity_decode ($row['description']); ?>
-            </div>
-          </td>
-          <td width="160"><?PHP echo $row['date']; ?></td>
-          <td width="160"><?PHP if(null != $row['file_file_name'] && !empty($row['file_file_name'])) { ?><a href=<?PHP echo '"../userfiles/pdf/'.$row['file_file_name'].'"'; ?>>資料下載</a><?PHP } ?></td>
-        </tr>
-
-<?PHP } ?>
+  <div class="policy pa">
+    <div class="py_tTable pa">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+<?PHP
+for ($i=0; $photo=mysql_fetch_array($photos,MYSQL_ASSOC); $i++){
+    if (0==$i%3) {
+        echo '<tr>';
+    }
+?>
+          <td lsrc="<?PHP echo "../gallery_activity/{$photo['file_name']}"; ?>"><a href="<?PHP echo "../gallery_activity/{$photo['file_name']}"; ?>" data-lightbox="activity-photos"><div class="img-frame"><div></div></div></a></td>
+<?PHP 
+    if (2==$i%3) {
+        echo '</tr>';
+        if (8 == $i) break;
+    }
+}
+?>
       </table>
 
       <div style="clear:both"></div>
       <div class="pagination">
-        <a <?PHP if ($page > 1) echo 'href="activity.php?p='.($page-1).'"'; ?>>&lt;&lt;</a>
+        <a <?PHP if ($page > 1) echo 'href="activity_photos.php?pid='.$pid.'&p='.($page-1).'"'; ?>>&lt;&lt;</a>
     <?PHP for ($pi=1; $pi<=(int)(($count-1)/$num)+1; ++$pi) { ?>
-        <a href="activity.php?p=<?PHP echo $pi; ?>"><?PHP echo $pi; ?></a>
+        <a href="activity_photos.php?pid=<?PHP echo $pid; ?>&p=<?PHP echo $pi; ?>"><?PHP echo $pi; ?></a>
     <?PHP } ?>
-        <a <?PHP if ($page < (int)(($count-1)/$num)+1) echo 'href="activity.php?p='.($page+1).'"'; ?>>&gt;&gt;</a>
+        <a <?PHP if ($page < (int)(($count-1)/$num)+1) echo 'href="activity_photos.php?pid='.$pid.'&p='.($page+1).'"'; ?>>&gt;&gt;</a>
       </div>
    </div>
-
   </div>
 
 </div>
@@ -142,5 +148,34 @@ for ($i=0; $row=mysql_fetch_array($rows,MYSQL_ASSOC); $i++){
     </div>
   </div>
 </div>
+
+<script>
+
+$(document).ready(function (){
+  $(".py_tTable table td").each(function(){
+    var obj_li=$(this).find("a>div>div");
+    var rw=parseInt(obj_li.css("width"));
+    var rh=parseInt(obj_li.css("height"));
+    var img=new Image();
+    img.src=$(this).attr("lsrc");
+    img.onload=function(){
+      var l,t;
+      var w=img.width;
+      var h=img.height;
+      if(w>rw){
+        h=h/w*rw;
+        w=rw;
+      }
+      if(h>rh){
+        w=w/h*rh;
+        h=rh;
+      }
+      l=(rw-w)/2;
+      t=(rh-h)/2;
+      obj_li.html("<img src=\"" + img.src + "\" style=\"width:" + w + "px;height:" + h + "px; position:relative;top:" + t + "px\"/>");
+    };
+  });
+});
+</script>
 </body>
 </html>
