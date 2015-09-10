@@ -30,10 +30,10 @@ require("../php-bin/function.php");
     </ul>
   </li>
   <li><a href="apply.html">入學申請</a>
-    <ul>
+  <!--  <ul>
       <li><a href="facility.html" target="_self">學校設施</a></li>
       <li><a href="#">學校特色</a></li>
-    </ul>
+    </ul>-->
   </li>
   <li><a href="join.html">幼小銜接</a></li>
   <li><a href="policy.html">課程政策</a></li>
@@ -75,7 +75,8 @@ require("../php-bin/function.php");
         <li><a href="<?PHP if(null != $row['down_file'] && !empty($row['down_file'])) { echo '../userfiles/pdf/'.$row['down_file']; } else { echo 'javascript:void(0);'; } ?>"><?PHP echo $row['a_title']; ?></a></li>
       <?PHP } ?></ul>
     </div>
-    <div class="col_01_img01"><a href="#"><img src="images/left_bottom_01.jpg" /></a></div>
+    <div class="col_01_img01"><!--<a href="#"><img src="images/left_bottom_01.jpg" /></a>--></div>
+    
     <div class="col_01_img02"><a href="timetable.html"><img src="images/left_bottom_02.jpg" /></a></div>
   </div>
   <!--第二列-->
@@ -92,7 +93,7 @@ require("../php-bin/function.php");
     </div>
     <!--活動相片-->
     <div class="active">
-      <h1></h1>
+      <h1 style='text-align:right;font-size:12px;'><a style="color:red;font-size:11px;" href='activity.php'>「更多」&nbsp;</a></h1>
       <?PHP
         $rows = mysql_query('SELECT * FROM tbl_activity ORDER BY `date` DESC LIMIT 1');
         $row=mysql_fetch_array($rows,MYSQL_ASSOC);
@@ -141,7 +142,7 @@ require("../php-bin/function.php");
         <li class="bdn"><a href="#">登入內聯網</a></li>
       </ul>
     </div>
-    <div class="contact fr"> <span>學校地址：新界天水圍天耀邨第二期</span> <span class="mt5">Phase 2, Tin Yiu Estate, Tin ShuiWai, NT</span> <span class="mt5">電話：2551 9751  傳真：2551 9759  電郵：info@ccc.fyw.org</span>
+    <div class="contact fr"> <span>學校地址：新界天水圍天耀邨第二期</span> <span class="mt5">Phase 2, Tin Yiu Estate, Tin ShuiWai, NT</span> <span class="mt5">電話：2551 9751  傳真：2551 9759  電郵：info@cccfyw.org</span>
 
       <p class="mt10">版權所有 中華基督教會方潤華小學</p>
     </div>
