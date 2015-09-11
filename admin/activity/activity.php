@@ -3,13 +3,14 @@
 header("Content-Type:text/html;charset=utf-8"); 
 require_once("../../admin.inc.php");
 
+// Used to pass type_id to activity_add.php
+$type = mysql_escape_string ($_GET['type']);
+
 // Selection
 require_once("activity_selection.php");
 
 // access control checking
 require_once("z_access_control.php");
-
-
 
 ?><html>
 <head>
@@ -49,7 +50,7 @@ require_once("z_access_control.php");
       <table width="100%" border="0" cellpadding="10" cellspacing="1" class="small">
         <tr align="left" valign="top" bgcolor="#FFFFFF">
           <td width="23%"><span class="style2"><span class="subHead">新增活動記錄</span>：</span></td>
-          <td width="32%"><a href="activity_add.php" class="style8">新增</a></td>
+          <td width="32%"><a href="activity_add.php?type=<?PHP echo $type; ?>" class="style8">新增</a></td>
           <td width="45%"><a href="a_type_update.php" class="style8"></a></td>
         </tr>
       </table>
@@ -86,7 +87,7 @@ require_once("z_access_control.php");
         <?php
         // Display user's information
 		
-        while ($get_rows=mysql_fetch_array($get_result,MYSQL_BOTH)){
+        while (null != $get_result && $get_rows=mysql_fetch_array($get_result,MYSQL_BOTH)){
 			
       ?>
         <tr align="left" valign="top" >  <td nowrap bgcolor="#FFFFFF" ><font class="style8"> 
@@ -96,16 +97,16 @@ require_once("z_access_control.php");
             <?php echo $get_rows["name"]?>
             </font></td>
          <td  bgcolor="#FFFFFF">
-           <span class="admin_maintain_contents"><font class="style8" color="#0000FF"><a href="gallery.php?id=<?php echo $get_rows["id"]?>"><img src="../icons/bmp.gif" alt=管理相片 width="16" height="16" border="0" / 刪除相片></a></font></span>
+           <span class="admin_maintain_contents"><font class="style8" color="#0000FF"><a href="gallery.php?id=<?php echo $get_rows["id"]?>&type=<?PHP echo $type; ?>"><img src="../icons/bmp.gif" alt=管理相片 width="16" height="16" border="0" / 刪除相片></a></font></span>
          </td>
-          <td align="center" nowrap bgcolor="#FFFFFF" ><font class="style8" color="#0000FF"><a href="activity_update.php?id=<?php echo $get_rows["id"]?>"><img src="../icons/xie.gif" width="16" height="16" border="0" alt=更改及檢視></a></font></td>
-          <td align="center" nowrap bgcolor="#FFFFFF" ><font class="style8" color="#0000FF"><a href="activity_delete.php?id=<?php echo $get_rows["id"]?>" onClick="return confirm('請注意! 此活動中的所有相片將會一併被刪除?')"><img src="../icons/del.gif" width="16" height="16" border="0" alt=刪除></a></font></td>
+          <td align="center" nowrap bgcolor="#FFFFFF" ><font class="style8" color="#0000FF"><a href="activity_update.php?id=<?php echo $get_rows["id"]?>&type=<?PHP echo $type; ?>"><img src="../icons/xie.gif" width="16" height="16" border="0" alt=更改及檢視></a></font></td>
+          <td align="center" nowrap bgcolor="#FFFFFF" ><font class="style8" color="#0000FF"><a href="activity_delete.php?id=<?php echo $get_rows["id"]?>&type=<?PHP echo $type; ?>" onClick="return confirm('請注意! 此活動中的所有相片將會一併被刪除?')"><img src="../icons/del.gif" width="16" height="16" border="0" alt=刪除></a></font></td>
         </tr>
         <?php   } ?>
-        <?php   if (mysql_num_rows($get_result)==0){ ?>
+        <?php   if (null != $get_result && mysql_num_rows($get_result)==0){ ?>
         <?php   } ?>
       </table>
-        <?php   if (mysql_num_rows($get_result)==0){ ?>
+        <?php   if (null != $get_result && mysql_num_rows($get_result)==0){ ?>
     
       <div align="center">
         <table width="100%" border="0" cellpadding="10" cellspacing="1" class="small">

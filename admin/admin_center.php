@@ -112,7 +112,7 @@ a, a:hover {
   <div class="vtitle"><em class="v v02"></em>活動資訊</div>
   <div class="vcon">
     <ul class="vconlist clearfix">
-      <li><a href="activity/activity.php?type=HD" target="admin_main">活動照片</a></li>
+      <li><a href="activity/activity.php?type=1" target="admin_main">活動照片</a></li>
       <!--li><a href="movie/activity.php" target="admin_main">活動影片</a></li>
       <li><a href="notice/downlist.php?type=2" target="admin_main">校園刊物</a></li>
       <li><a href="notice/downlist.php?type=5" target="admin_main">傳媒報道</a></li>

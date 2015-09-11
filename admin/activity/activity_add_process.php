@@ -50,7 +50,7 @@ if( $name != "" )
 
 	mysql_close();
 
-	header("Location:activity.php?msg=$msg&t_name=&type_id=".$type_id);
+	header("Location:activity.php?msg=$msg&t_name=&type_id=".$type_id.'&type='.$type_id);
 
 }
 

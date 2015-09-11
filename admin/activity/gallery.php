@@ -3,6 +3,9 @@ header("Content-Type:text/html;charset=utf-8");
 require_once("../../admin.inc.php");
 require_once("gallery_selection.php");
 
+// Used to pass type_id to photo_add.php & when click back
+$type = mysql_escape_string ($_GET['type']);
+
 $record = mysql_fetch_object($get_result3);
 
 access_detail_check( $record->type_id );
@@ -23,7 +26,7 @@ access_detail_check( $record->type_id );
 <script language="javascript">
 <!--
 function PhotoAdd() {
-	document.gallery.action="photo_add.php";
+	document.gallery.action="photo_add.php?type=<?PHP echo $type; ?>";
 }
 
 
@@ -193,7 +196,7 @@ if($j<5)
   <tr>
     <td align="right" valign="top">      <table width="100%" border="0" cellpadding="10" cellspacing="1" >
       <tr align="left" valign="top" bgcolor="#FFFFFF">
-        <td width="50%" align="left" bgcolor="#FFFFFF"><span class="subHead"><a href="activity.php">返回活動記錄目錄 </a> </span>            </td>
+        <td width="50%" align="left" bgcolor="#FFFFFF"><span class="subHead"><a href="activity.php?type=<?PHP echo $type; ?>">返回活動記錄目錄 </a> </span>            </td>
         <td align="right" bgcolor="#FFFFFF"><?php
         if ($total_page>0 && $page>0){
             page_display("",$page,$total_page,10,$search_arr,$sort_arr,$class_arr,"");

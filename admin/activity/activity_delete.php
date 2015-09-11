@@ -9,6 +9,9 @@ require_once("z_access_control.php");
 
 
 
+// Used to pass type_id to get back to activity.php
+$type = mysql_escape_string ($_GET['type']);
+
 $id = $_GET["id"]|0;
 
 
@@ -49,7 +52,7 @@ if( $obj = mysql_fetch_object($result) )
 	
 	
 	mysql_close();
-	header("Location: activity.php?msg=$msg");
+	header("Location: activity.php?msg=$msg&type=$type");
 
 }
 

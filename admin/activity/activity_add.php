@@ -7,6 +7,8 @@ require_once("../../php-bin/function.php");
 // access control checking
 require_once("z_access_control.php");
 
+// Used to pass type_id to activity_add_process.php & when click back
+$type = mysql_escape_string ($_GET['type']);
 
 ?><html>
 
@@ -95,7 +97,9 @@ function check_valid()
                 <tr bgcolor="ECECEC">
                   <td>&nbsp;</td>
                   <td><input name="submit" type=submit class="style8" value="    確定新增    ">
-                      <input name="back" type="button" class="style5" id="back" onClick="location.href='activity.php'" value="返回">                  </td>
+                      <input name="back" type="button" class="style5" id="back" onClick="location.href='activity.php?type=<?PHP echo $type; ?>'" value="返回">
+                    <input name="type_id" type="hidden" id="type_id" value="<?PHP echo $type; ?>">
+                  </td>
                 </tr>
               </form>
             </table>
