@@ -12,9 +12,12 @@ require_once("activity_selection.php");
 // access control checking
 require_once("z_access_control.php");
 
+// Different types have different texts/names
+require_once("activity_text.php");
+
 ?><html>
 <head>
-<title>活動記錄管理</title>
+<title><?PHP echo $activity_title[$type]; ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <LINK REL="StyleSheet" TYPE="text/css" HREF="../../js/style.css">
 <style type="text/css">
@@ -25,7 +28,7 @@ require_once("z_access_control.php");
 </style>
 </head>
 <body>
-<p class="title">活動照片</p>
+<p class="title"><?PHP echo $activity_p_title[$type]; ?></p>
 <table width="750" height="0"  border="0" align="left" cellpadding="5" cellspacing="0" class="small">
   <?php
 
@@ -49,7 +52,7 @@ require_once("z_access_control.php");
     <?php } ?>
       <table width="100%" border="0" cellpadding="10" cellspacing="1" class="small">
         <tr align="left" valign="top" bgcolor="#FFFFFF">
-          <td width="23%"><span class="style2"><span class="subHead">新增活動記錄</span>：</span></td>
+          <td width="23%"><span class="style2"><span class="subHead"><?PHP echo $activity_subhead[$type]; ?></span>：</span></td>
           <td width="32%"><a href="activity_add.php?type=<?PHP echo $type; ?>" class="style8">新增</a></td>
           <td width="45%"><a href="a_type_update.php" class="style8"></a></td>
         </tr>

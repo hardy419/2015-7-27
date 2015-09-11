@@ -7,6 +7,9 @@ require_once("../../php-bin/function.php");
 // access control checking
 require_once("z_access_control.php");
 
+// Different types have different texts/names
+require_once("activity_text.php");
+
 
 require_once("activity_update_selection.php");
 
@@ -19,7 +22,7 @@ $type = mysql_escape_string ($_GET['type']);
 
 <head>
 
-<title>活動記錄管理 </title>
+<title><?PHP echo $activity_title[$type]; ?> </title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
@@ -28,7 +31,9 @@ $type = mysql_escape_string ($_GET['type']);
 <script language="JavaScript" src="../../js/calendarevents.js" type="text/javascript"></script>
 <script language="JavaScript" src="../../js/calendar.js" type="text/javascript"></script>
 <script language="JavaScript" src="../../js/calendar-en.js" type="text/javascript"></script>
+<script src="../../js/jquery-1.11.3.min.js"></script>
 <script src="../../js/validation.js"></script>
+<script src="activity.js"></script>
 
 <script language="javascript">
 <!--
@@ -60,15 +65,15 @@ function check_valid()
 
 </head>
 
-<form method="POST" name="form1" action="activity_update_process.php" onsubmit="return check_valid();">
+<form method="POST" name="form1" action="activity_update_process.php" onsubmit="return check_valid();" enctype="multipart/form-data">
 
 <body style="background-color: #FFFFFF"  onLoad="if(document.form1.type_id.options[document.form1.type_id.selectedIndex].value==<?php echo $support_activity_id?>){document.form1.class_year.style.visibility='visible'}else{document.form1.class_year.style.visibility='hidden'}" >
-<p class="title">活動照片</p>
+<p class="title"><?PHP echo $activity_p_title[$type]; ?></p>
 <table width="650" border="0" cellpadding="5" cellspacing="1" class="table1">
   <tr> 
     <td  valign="top"><table width="100%"  border="0" align="left" cellpadding="10" cellspacing="1" bgcolor="#CCCCCC" class="small">
       <tr bgcolor="ECECEC">
-        <td colspan="2" class="subHead">更改活動資料</td>
+        <td colspan="2" class="subHead"><?PHP echo $activity_update_subhead[$type]; ?></td>
         </tr>
 <!--
       <tr valign="top" bgcolor="#FFFFFF">
@@ -84,11 +89,11 @@ function check_valid()
         </span></td>
       </tr>
 -->
-      <tr valign="top" bgcolor="#FFFFFF">
+      <tr class="tr-name" valign="top" bgcolor="#FFFFFF">
         <td width="83" height="18">&nbsp;活動名稱:</td>
         <td width="502" height="18"><input name="name" type=text class="style8" id="name" value="<?php echo $get_rows["name"]?>" size="40">        </td>
       </tr>
-      <tr valign="top" bgcolor="#FFFFFF">
+      <tr class="tr-date" valign="top" bgcolor="#FFFFFF">
         <td height="18">&nbsp;活動日期:</td>
         <td height="18">
         <input name="date_year"  id="date_year" type="text" size="4" maxlength="4" class="style8" value="<?php echo substr($get_rows[date], 0,4)?>">
@@ -98,13 +103,18 @@ function check_valid()
 	  <input name="date_day" id="date_day" type="text" size="2" maxlength="2" class="style8" value="<?php echo substr($get_rows[date], 8,2)?>">
 &nbsp;<img src="../../images/calendar.gif" alt="calendar" border="0" onClick="showCalendar('date_year','date_day','date_month','date_year','d m y')">&nbsp; YYYY-MM-DD</td>
       </tr>
-      <tr valign="top" bgcolor="#FFFFFF">
+      <tr class="tr-participants" valign="top" bgcolor="#FFFFFF">
         <td height="18">&nbsp;參加對象:</td>
         <td height="18"> <input name="participant" type="text" class="style8" id="participant" size="40" value="<?php echo $get_rows["participant"]?>" ></td>
       </tr>
-      <tr valign="top" bgcolor="#FFFFFF">
+      <tr class="tr-description" valign="top" bgcolor="#FFFFFF">
         <td height="18">&nbsp;活動介紹:</td>
         <td height="18"><textarea name="desc" cols="38" rows="5" id="desc"><?php echo $get_rows["description"]?></textarea></td>
+      </tr>
+	  <tr>
+        <td height="18" valign="top" bgcolor="#FFFFFF">下載:</td>
+        <td height="18" colspan="3" bgcolor="FFFFFF"><input type="file" name="a_file" id="a_file" style="display:none" onChange="document.form1.link_pic1.value=this.value">
+        <input name="link_pic1" type="text" id="link_pic1" size="25" value="<?php echo $get_rows["file_file_name"]?>"><input type="button" size="20" value="瀏覽文件" onClick="document.form1.a_file.click();"></td>
       </tr>
       <tr valign="top" bgcolor="ECECEC">
         <td>&nbsp;</td>
