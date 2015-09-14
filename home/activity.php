@@ -12,6 +12,7 @@ require("../php-bin/function.php");
 <link rel="stylesheet" type="text/css" href="css/layout.css">
 <link rel="stylesheet" type="text/css" href="css/public.css">
 <link rel="stylesheet" type="text/css" href="css/reset.css">
+<script src="../js/jquery-1.11.3.min.js"></script>
 <style>
 .py_titleTable table td:first-child {width: 100px;}
 .py_titleTable table td:first-child+td {width: 260px;}
@@ -62,18 +63,8 @@ require("../php-bin/function.php");
   </div>
 
   <div class="policy pa">
-      
-      <div class="py_titleTable pa">
-      <table width="100%" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td>標題</td>
-          <td style="width:360px">描述</td>
-          <td>日期</td>
-        </tr>
-      </table>
-    </div>
     <div class="py_tTable pa">
-      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <ul>
 <?PHP
 if (isset ($_GET['p'])) {
     $page = $_GET['p'];
@@ -81,26 +72,18 @@ if (isset ($_GET['p'])) {
 else {
     $page = 1;
 }
-$num = 6;
-$count = mysql_query('SELECT COUNT(*) AS count FROM tbl_activity ORDER BY `date` DESC', $link_id);
+$num = 8;
+$count = mysql_query('SELECT COUNT(*) AS count FROM tbl_activity WHERE `type_id`=0 ORDER BY `date` DESC', $link_id);
 $count = mysql_fetch_array($count, MYSQL_ASSOC);
 $count = $count['count'];
-$rows = mysql_query('SELECT * FROM tbl_activity ORDER BY `date` DESC LIMIT '.($num*($page-1)).','.$num,$link_id);
+$rows = mysql_query('SELECT * FROM tbl_activity WHERE `type_id`=0 ORDER BY `date` DESC LIMIT '.($num*($page-1)).','.$num,$link_id);
 for ($i=0; $row=mysql_fetch_array($rows,MYSQL_ASSOC); $i++){
+    $photos = mysql_query("SELECT * FROM tbl_activity_gallery WHERE act_id={$row['id']} ORDER BY `g_order` ASC");
+    $photo=mysql_fetch_array($photos,MYSQL_ASSOC);
 ?>
-        <tr>
-          <td width="160"><a href="activity_photos.php?pid=<?PHP echo $row['id']; ?>"><?PHP echo $row['name']; ?></a></td>
-          <td>
-            <div class="tb_con">
-            <?PHP //echo html_entity_decode ($row['description']); ?>
-            </div>
-          </td>
-          <td width="160"><?PHP echo $row['date']; ?></td>
-        </tr>
-
+      <li class="img-info" lsrc="<?PHP echo "../gallery_activity/{$photo['file_name']}"; ?>"><div class="img-frame"><a href="activity_photos.php?pid=<?PHP echo $row['id']; ?>"><div></div></a><div class="info-div"><p><?PHP echo $row['name']; ?></p><p><?PHP echo $row['date']; ?></p><p><?PHP echo html_entity_decode ($row['description']); ?></p></div></div></li>
 <?PHP } ?>
-      </table>
-
+      </ul>
       <div style="clear:both"></div>
       <div class="pagination">
         <a <?PHP if ($page > 1) echo 'href="activity.php?p='.($page-1).'"'; ?>>&lt;&lt;</a>
@@ -140,5 +123,60 @@ for ($i=0; $row=mysql_fetch_array($rows,MYSQL_ASSOC); $i++){
     </div>
   </div>
 </div>
+
+<script>
+$(document).ready(function (){
+  $('.img-info').css('width','220px');
+  $('.img-info').css('height','170px');
+  $('.img-info').css('float','left');
+  $('.img-info').css('margin-top','20px');
+  $('.img-info').css('margin-bottom','80px');
+  $('.img-frame').css('width','209px');
+  $('.img-frame').css('height','159px');
+  $('.img-frame').css('border','1px solid #c0c0c0');
+  $('.img-frame>a>div').css('width','200px');
+  $('.img-frame>a>div').css('height','150px');
+  $('.img-frame>a>div').css('padding','5px');
+  $('.info-div').css('text-align','center');
+  $('.info-div p').css('overflow','hidden');
+  $('.info-div p').css('white-space','nowrap');
+  $('.info-div p').css('text-overflow','ellipsis');
+  // Image re-sizing
+  $(".py_tTable li").each(function(idx){
+    if(0==idx%4){
+      $(this).css('margin-left','15px');
+    }
+    if(3==idx%4){
+      $('<div style="clear:both"></div>').insertAfter($(this));
+    }
+    else{
+      $(this).css('margin-right','20px');
+    }
+
+    var obj_li=$(this).find("div a div");
+    var rw=parseInt(obj_li.css("width"));
+    var rh=parseInt(obj_li.css("height"));
+    var img=new Image();
+    img.src=$(this).attr("lsrc");
+    img.onload=function(){
+      var l,t;
+      var w=img.width;
+      var h=img.height;
+      if(w>rw){
+        h=h/w*rw;
+        w=rw;
+      }
+      if(h>rh){
+        w=w/h*rh;
+        h=rh;
+      }
+      l=(rw-w)/2;
+      t=(rh-h)/2;
+      obj_li.html("<img src=\"" + img.src + "\" style=\"width:" + w + "px;height:" + h + "px; position:relative;left:" + l + "px;top:" + t + "px\"/>");
+    };
+  });
+  // Image re-sizing END
+});
+</script>
 </body>
 </html>

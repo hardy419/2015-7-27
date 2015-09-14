@@ -20,20 +20,31 @@ require("../php-bin/function.php");
 .py_titleTable table td:first-child+td {width: 260px;}
 .py_titleTable table td:first-child+td+td {width: 120px;}
 .py_titleTable table td:first-child+td+td+td {width: 80px;}
-.py_tTable {height: auto}
+.py_tTable {height: auto; top: 80px}
 .pagination {padding: 10px; float: right}
 
 .py_tTable table td {border:0; padding-left:40px; padding-top:20px;}
 .py_tTable table tr:first-child+tr+tr td {padding-bottom:20px;}
 .img-frame {
   width: 240px;        /* 如果加了border要減掉border的寬度 */
-  height: 160px;       /* 同上 */
+  height: 150px;       /* 同上 */
   border:1px solid #c0c0c0;
 }
 .img-frame div {
   width: 220px;        /* 200 = 220 - 10*2 */
-  height: 140px;
+  height: 130px;
   padding: 10px;
+}
+.activity-cover {
+  width: 200px;
+  height: 80px;
+  position: absolute;
+  top: -100px;
+}
+.info-div p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 </style>
 </head>
@@ -90,8 +101,12 @@ $count = mysql_query("SELECT COUNT(*) AS count FROM tbl_activity_gallery WHERE a
 $count = mysql_fetch_array($count, MYSQL_ASSOC);
 $count = $count['count'];
 $photos = mysql_query("SELECT * FROM tbl_activity_gallery WHERE act_id={$pid} ORDER BY `g_order` ASC LIMIT ".($num*($page-1)).','.$num);
+$rows = mysql_query("SELECT * FROM tbl_activity WHERE id={$pid}",$link_id);
+$row = mysql_fetch_array($rows,MYSQL_ASSOC);
 ?>
   <div class="policy pa">
+    <a href="activity.php"><div class="activity-cover"></div></a>
+    <div class="info-div"><p>標題：<?PHP echo $row['name']; ?></p><p>日期：<?PHP echo $row['date']; ?></p><p>描述：<?PHP echo html_entity_decode ($row['description']); ?></p></div>
     <div class="py_tTable pa">
       <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <?PHP
@@ -117,6 +132,7 @@ for ($i=0; $photo=mysql_fetch_array($photos,MYSQL_ASSOC); $i++){
         <a href="activity_photos.php?pid=<?PHP echo $pid; ?>&p=<?PHP echo $pi; ?>"><?PHP echo $pi; ?></a>
     <?PHP } ?>
         <a <?PHP if ($page < (int)(($count-1)/$num)+1) echo 'href="activity_photos.php?pid='.$pid.'&p='.($page+1).'"'; ?>>&gt;&gt;</a>
+        <a href="activity.php">返回</a>
       </div>
    </div>
   </div>

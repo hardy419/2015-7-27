@@ -93,9 +93,9 @@ require("../php-bin/function.php");
     </div>
     <!--活動相片-->
     <div class="active">
-      <h1 style='text-align:right;font-size:12px;'><a style="color:red;font-size:11px;" href='activity.php'>「更多」&nbsp;</a></h1>
+      <h1 style='text-align:right;font-size:12px;'><a style="color:red;font-size:11px;" href='activity.php'><img src="images/more.jpg" /></a></h1>
       <?PHP
-        $rows = mysql_query('SELECT * FROM tbl_activity ORDER BY `date` DESC LIMIT 1');
+        $rows = mysql_query('SELECT * FROM tbl_activity WHERE `type_id`=0 ORDER BY `date` DESC LIMIT 1');
         $row=mysql_fetch_array($rows,MYSQL_ASSOC);
         $photos = mysql_query("SELECT * FROM tbl_activity_gallery WHERE act_id={$row['id']} ORDER BY `g_order` ASC");
       ?>

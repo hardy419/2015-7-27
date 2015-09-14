@@ -93,7 +93,7 @@ a, a:hover {
   <div class="vtitle"><em class="v v02"></em>首頁內容</div>
   <div class="vcon">
     <ul class="vconlist clearfix">
-      <li><a href="activity/activity.php?type=1" target="admin_main">家課日志</a></li>
+      <li><a href="activity/activity.php?type=1" target="admin_main">家課日誌</a></li>
     </ul>
   </div>
   <div class="vtitle"><em class="v v02"></em>學校資料</div>
