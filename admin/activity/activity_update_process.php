@@ -34,6 +34,7 @@ $type_id = $_POST[type_id]|0;
 $order = $_POST["order"]|0;
 $add_time = date('Y-m-d H:i:s', time());
 $path_pdf = "../../userfiles/upload/";
+$re_name_pdf = $_POST[link_pic1]|'';
 $re_name = date("YmdHis").'_'.(floor(microtime()*1000));
 if($_FILES["a_file"]["name"]!=""){
 			$type = strtolower(strrchr($_FILES["a_file"]["name"],"."));

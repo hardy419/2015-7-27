@@ -89,6 +89,7 @@ function check_valid()
         </span></td>
       </tr>
 -->
+<?PHP if (0 == $type) { ?>
       <tr class="tr-name" valign="top" bgcolor="#FFFFFF">
         <td width="83" height="18">&nbsp;活動名稱:</td>
         <td width="502" height="18"><input name="name" type=text class="style8" id="name" value="<?php echo $get_rows["name"]?>" size="40">        </td>
@@ -111,11 +112,35 @@ function check_valid()
         <td height="18">&nbsp;活動介紹:</td>
         <td height="18"><textarea name="desc" cols="38" rows="5" id="desc"><?php echo $get_rows["description"]?></textarea></td>
       </tr>
-	  <tr>
-        <td height="18" valign="top" bgcolor="#FFFFFF">下載:</td>
-        <td height="18" colspan="3" bgcolor="FFFFFF"><input type="file" name="a_file" id="a_file" style="display:none" onChange="document.form1.link_pic1.value=this.value">
+<?PHP } else if (1 == $type) { ?>
+      <tr class="tr-date" valign="top" bgcolor="#FFFFFF">
+        <td height="18">&nbsp;日期:</td>
+        <td height="18">
+        <input name="date_year"  id="date_year" type="text" size="4" maxlength="4" class="style8" value="<?php echo substr($get_rows[date], 0,4)?>">
+      -
+        <input name="date_month" id="date_month" type="text" size="2" maxlength="2" class="style8" value="<?php echo substr($get_rows[date], 5,2)?>">
+      -
+	  <input name="date_day" id="date_day" type="text" size="2" maxlength="2" class="style8" value="<?php echo substr($get_rows[date], 8,2)?>">
+&nbsp;<img src="../../images/calendar.gif" alt="calendar" border="0" onClick="showCalendar('date_year','date_day','date_month','date_year','d m y')">&nbsp; YYYY-MM-DD</td>
+      </tr>
+      <tr class="tr-classyear" valign="top" bgcolor="#FFFFFF">
+        <td width="83" height="18">&nbsp;年級:</td>
+        <td width="502" height="18"><input name="class_year" type=text class="style8" id="class_year" value="<?php echo $get_rows["class_year"]?>" size="40">        </td>
+      </tr>
+      <tr class="tr-classtype" valign="top" bgcolor="#FFFFFF">
+        <td height="18">&nbsp;班別:</td>
+        <td height="18"> <input name="name" type="text" class="style8" id="name" size="40" value="<?php echo $get_rows["name"]?>" ></td>
+      </tr>
+      <tr class="tr-description" valign="top" bgcolor="#FFFFFF">
+        <td height="18">&nbsp;描述:</td>
+        <td height="18"><textarea name="desc" cols="38" rows="5" id="desc"><?php echo $get_rows["description"]?></textarea></td>
+      </tr>
+	  <tr class="tr-download">
+        <td height="18" valign="top" bgcolor="#FFFFFF">圖片:</td>
+        <td height="18" colspan="3" bgcolor="FFFFFF"><input type="file" accept="image/jpeg" name="a_file" id="a_file" style="display:none" onChange="document.form1.link_pic1.value=this.value">
         <input name="link_pic1" type="text" id="link_pic1" size="25" value="<?php echo $get_rows["file_file_name"]?>"><input type="button" size="20" value="瀏覽文件" onClick="document.form1.a_file.click();"></td>
       </tr>
+<?PHP } ?>
       <tr valign="top" bgcolor="ECECEC">
         <td>&nbsp;</td>
         <td><input name="id" type=hidden id="id" value="<?php echo $get_rows["id"]?>">
@@ -127,6 +152,12 @@ function check_valid()
     </table> </td>
   </tr>
 </table>
+
+<script>
+$(function(){
+  form_setting(<?PHP echo $type; ?>);
+});
+</script>
 </body>
 
 </form>

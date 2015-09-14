@@ -26,6 +26,7 @@ require_once("activity_text.php");
 .style5 {color: #666666}
 -->
 </style>
+<script src="../../js/jquery-1.11.3.min.js"></script>
 </head>
 <body>
 <p class="title"><?PHP echo $activity_p_title[$type]; ?></p>
@@ -80,18 +81,28 @@ require_once("activity_text.php");
         </tr>
       </table>
       <table width="100%"  border="0" cellpadding="10" cellspacing="1" bgcolor="CCCCCC">
+<?PHP if (0 == $type) { ?>
         <tr valign="top" bgcolor="ECECEC" > <td width="12%" nowrap class="admin_maintain_header">日期</td>
           <td nowrap class="admin_maintain_header">標題</td>
           <td class="admin_maintain_header">管理相片</td>
           <td width="13%" nowrap bgcolor="ECECEC" class="admin_maintain_header">更改及檢視</td>
           <td width="7%" nowrap bgcolor="ECECEC" class="admin_maintain_header">刪除</td>
         </tr>
+<?PHP } else if (1 == $type) { ?>
+        <tr valign="top" bgcolor="ECECEC" > <td width="12%" nowrap class="admin_maintain_header">日期</td>
+          <td width="12%" class="admin_maintain_header">年級</td>
+          <td class="admin_maintain_header">描述</td>
+          <td class="admin_maintain_header">.jpg圖片</td>
+          <td width="13%" nowrap bgcolor="ECECEC" class="admin_maintain_header">更改及檢視</td>
+          <td width="7%" nowrap bgcolor="ECECEC" class="admin_maintain_header">刪除</td>
+        </tr>
+<?PHP } ?>
         
         <?php
         // Display user's information
 		
         while (null != $get_result && $get_rows=mysql_fetch_array($get_result,MYSQL_BOTH)){
-			
+			if (0 == $type) { 
       ?>
         <tr align="left" valign="top" >  <td nowrap bgcolor="#FFFFFF" ><font class="style8"> 
             <?php echo substr($get_rows["date"],8,2)."-".substr($get_rows["date"],5,2)."-".substr($get_rows["date"],0,4)?>
@@ -105,7 +116,23 @@ require_once("activity_text.php");
           <td align="center" nowrap bgcolor="#FFFFFF" ><font class="style8" color="#0000FF"><a href="activity_update.php?id=<?php echo $get_rows["id"]?>&type=<?PHP echo $type; ?>"><img src="../icons/xie.gif" width="16" height="16" border="0" alt=更改及檢視></a></font></td>
           <td align="center" nowrap bgcolor="#FFFFFF" ><font class="style8" color="#0000FF"><a href="activity_delete.php?id=<?php echo $get_rows["id"]?>&type=<?PHP echo $type; ?>" onClick="return confirm('請注意! 此活動中的所有相片將會一併被刪除?')"><img src="../icons/del.gif" width="16" height="16" border="0" alt=刪除></a></font></td>
         </tr>
-        <?php   } ?>
+<?PHP } else if (1 == $type) { ?>
+        <tr align="left" valign="top" >  <td nowrap bgcolor="#FFFFFF" ><font class="style8"> 
+            <?php echo substr($get_rows["date"],8,2)."-".substr($get_rows["date"],5,2)."-".substr($get_rows["date"],0,4)?>
+            </font></td>
+          <td nowrap bgcolor="#FFFFFF" ><font class="style8"> 
+            <?php echo $get_rows["class_year"].'年級'.$get_rows["name"].'班'; ?>
+            </font></td>
+          <td bgcolor="#FFFFFF" ><font class="style8"> 
+            <?php echo html_entity_decode ($get_rows["description"]); ?>
+            </font></td>
+          <td align="center" bgcolor="#FFFFFF" >
+            <div class="jpgpic" lsrc="<?php echo '../../userfiles/upload/'.$get_rows["file_file_name"]; ?>"><a href="javascript:void(0);"><div class="img-frame"><div></div></div></a></div>
+          </td>
+          <td align="center" nowrap bgcolor="#FFFFFF" ><font class="style8" color="#0000FF"><a href="activity_update.php?id=<?php echo $get_rows["id"]?>&type=<?PHP echo $type; ?>"><img src="../icons/xie.gif" width="16" height="16" border="0" alt=更改及檢視></a></font></td>
+          <td align="center" nowrap bgcolor="#FFFFFF" ><font class="style8" color="#0000FF"><a href="activity_delete.php?id=<?php echo $get_rows["id"]?>&type=<?PHP echo $type; ?>" onClick="return confirm('請注意! 此活動中的所有相片將會一併被刪除?')"><img src="../icons/del.gif" width="16" height="16" border="0" alt=刪除></a></font></td>
+        </tr>
+        <?php   } } ?>
         <?php   if (null != $get_result && mysql_num_rows($get_result)==0){ ?>
         <?php   } ?>
       </table>
@@ -133,5 +160,40 @@ require_once("activity_text.php");
     </p></td>
   </tr>
 </table>
+
+<script>
+$(document).ready(function (){
+  $('.jpgpic').css('width','170px');
+  $('.jpgpic').css('height','120px');
+  $('.img-frame').css('width','160px');
+  $('.img-frame').css('height','110px');
+  $('.img-frame div').css('width','150px');
+  $('.img-frame div').css('height','100px');
+  $('.img-frame div').css('padding','5px');
+  $("div").each(function(){
+    var obj_li=$(this).find("a>div>div");
+    var rw=parseInt(obj_li.css("width"));
+    var rh=parseInt(obj_li.css("height"));
+    var img=new Image();
+    img.src=$(this).attr("lsrc");
+    img.onload=function(){
+      var l,t;
+      var w=img.width;
+      var h=img.height;
+      if(w>rw){
+        h=h/w*rw;
+        w=rw;
+      }
+      if(h>rh){
+        w=w/h*rh;
+        h=rh;
+      }
+      l=(rw-w)/2;
+      t=(rh-h)/2;
+      obj_li.html("<img src=\"" + img.src + "\" style=\"width:" + w + "px;height:" + h + "px; position:relative;top:" + t + "px\"/>");
+    };
+  });
+});
+</script>
 </body>
 </html>
