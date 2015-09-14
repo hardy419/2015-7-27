@@ -66,9 +66,8 @@ require("../php-bin/function.php");
       <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td>標題</td>
-          <td>描述</td>
+          <td style="width:360px">描述</td>
           <td>日期</td>
-          <td>下載</td>
         </tr>
       </table>
     </div>
@@ -96,7 +95,6 @@ for ($i=0; $row=mysql_fetch_array($rows,MYSQL_ASSOC); $i++){
             </div>
           </td>
           <td width="160"><?PHP echo $row['date']; ?></td>
-          <td width="160"><?PHP if(null != $row['file_file_name']  && !empty($row['file_file_name'])) { ?><a href=<?PHP echo '"../userfiles/pdf/'.$row['file_file_name'].'"'; ?>>資料下載</a><?PHP } ?></td>
         </tr>
 
 <?PHP } ?>
@@ -136,7 +134,7 @@ for ($i=0; $row=mysql_fetch_array($rows,MYSQL_ASSOC); $i++){
         <li class="bdn"><a href="#">登入內聯網</a></li>
       </ul>
     </div>
-    <div class="contact fr"> <span>學校地址：新界天水圍天耀邨第二期</span> <span class="mt5">Phase 2, Tin Yiu Estate, Tin ShuiWai, NT</span> <span class="mt5">電話：2551 9751  傳真：2551 9759  電郵：info@cccfyw.org</span>
+    <div class="contact fr"> <span>學校地址：新界天水圍天耀邨第二期</span> <span class="mt5">Phase 2, Tin Yiu Estate, Tin ShuiWai, NT</span> <span class="mt5">電話：2251 9751  傳真：2251 9759  電郵：info@cccfyw.edu.hk</span>
 
       <p class="mt10">版權所有 中華基督教會方潤華小學</p>
     </div>

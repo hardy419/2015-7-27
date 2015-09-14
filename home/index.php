@@ -72,7 +72,7 @@ require("../php-bin/function.php");
         $rows = mysql_query('SELECT * FROM tbl_notice WHERE a_type=1 ORDER BY `a_date` DESC LIMIT 5');
       ?>
       <ul><?PHP for ($i=0; $row=mysql_fetch_array($rows,MYSQL_ASSOC); $i++){ ?>
-        <li><a href="<?PHP if(null != $row['down_file'] && !empty($row['down_file'])) { echo '../userfiles/pdf/'.$row['down_file']; } else { echo 'javascript:void(0);'; } ?>"><?PHP echo $row['a_title']; ?></a></li>
+        <li><a href="notice.php"><?PHP echo $row['a_title']; ?></a></li>
       <?PHP } ?></ul>
     </div>
     <div class="col_01_img01"><!--<a href="#"><img src="images/left_bottom_01.jpg" /></a>--></div>
@@ -88,7 +88,7 @@ require("../php-bin/function.php");
         $rows = mysql_query('SELECT * FROM tbl_chancellor where file_type_id=9 ORDER BY `file_date` DESC LIMIT 5');
       ?>
       <ul><?PHP for ($i=0; $row=mysql_fetch_array($rows,MYSQL_ASSOC); $i++){ ?>
-        <li><a href="<?PHP if(null != $row['file_file_name'] && !empty($row['file_file_name'])) { echo '../file_download/'.$row['file_file_name']; } else { echo 'javascript:void(0);'; } ?>"><?PHP echo $row['file_title']; ?></a><span><?PHP echo $row['file_date']; ?></span></li>
+        <li><a href="speech.php"><?PHP echo $row['file_title']; ?></a><span><?PHP echo $row['file_date']; ?></span></li>
       <?PHP } ?></ul>
     </div>
     <!--活動相片-->
@@ -99,7 +99,7 @@ require("../php-bin/function.php");
         $row=mysql_fetch_array($rows,MYSQL_ASSOC);
         $photos = mysql_query("SELECT * FROM tbl_activity_gallery WHERE act_id={$row['id']} ORDER BY `g_order` ASC");
       ?>
-      <p><?PHP echo $row['name']; ?></p>
+      <a href="activity_photos.php?pid=<?PHP echo $row['id']; ?>"><p><?PHP echo $row['name']; ?></p></a>
       <ul><?PHP for ($i=0; $photo=mysql_fetch_array($photos,MYSQL_ASSOC); $i++){ if($i<=3) { ?>
         <li><a href="<?PHP echo "../gallery_activity/{$photo['file_name']}"; ?>" data-lightbox="activity-photos"><img style="width:60px;height:60px" src="<?PHP echo "../gallery_activity/{$photo['file_name']}"; ?>" /></a></li>
         <?PHP } else { ?>
@@ -116,7 +116,7 @@ require("../php-bin/function.php");
         $rows = mysql_query('SELECT * FROM tbl_lastest ORDER BY `date` DESC LIMIT 3');
       ?>
       <ul><?PHP for ($i=0; $row=mysql_fetch_array($rows,MYSQL_ASSOC); $i++){ ?>
-        <li><a href="<?PHP if(null != $row['file_file_name'] && !empty($row['file_file_name'])) { echo '../userfiles/pdf/'.$row['file_file_name']; } else { echo 'javascript:void(0);'; } ?>"><?PHP echo $row['name']; ?></a><span><?PHP echo $row['date']; ?></span></li>
+        <li><a href="news.php"><?PHP echo $row['name']; ?></a><span><?PHP echo $row['date']; ?></span></li>
        
       <?PHP } ?></ul>
     </div>
@@ -142,7 +142,7 @@ require("../php-bin/function.php");
         <li class="bdn"><a href="#">登入內聯網</a></li>
       </ul>
     </div>
-    <div class="contact fr"> <span>學校地址：新界天水圍天耀邨第二期</span> <span class="mt5">Phase 2, Tin Yiu Estate, Tin ShuiWai, NT</span> <span class="mt5">電話：2551 9751  傳真：2551 9759  電郵：info@cccfyw.org</span>
+    <div class="contact fr"> <span>學校地址：新界天水圍天耀邨第二期</span> <span class="mt5">Phase 2, Tin Yiu Estate, Tin ShuiWai, NT</span> <span class="mt5">電話：2251 9751  傳真：2251 9759  電郵：info@cccfyw.edu.hk</span>
 
       <p class="mt10">版權所有 中華基督教會方潤華小學</p>
     </div>
