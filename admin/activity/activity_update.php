@@ -113,6 +113,10 @@ function check_valid()
         <td height="18"><textarea name="desc" cols="38" rows="5" id="desc"><?php echo $get_rows["description"]?></textarea></td>
       </tr>
 <?PHP } else if (1 == $type) { ?>
+      <tr class="tr-title" valign="top" bgcolor="#FFFFFF">
+        <td height="18">&nbsp;標題:</td>
+         <td height="18"> <input name="participant" type="text" class="style8" id="participant" size="40" value="<?php echo $get_rows["participant"]?>" ></td>
+      </tr>
       <tr class="tr-date" valign="top" bgcolor="#FFFFFF">
         <td height="18">&nbsp;日期:</td>
         <td height="18">

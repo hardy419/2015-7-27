@@ -120,7 +120,7 @@ require("../php-bin/function.php");
        
       <?PHP } ?></ul>
     </div>
-    <div class="col_03_pic01 fl"><a href="#"><img src="images/right_bottom_01.jpg" /></a></div>
+    <div class="col_03_pic01 fl"><a href="homework.php"><img src="images/right_bottom_01.jpg" /></a></div>
     <div class="col_03_pic02 fl"><a href="#"><img src="images/right_bottom_02.jpg" /></a></div>
   </div>
 </div>
